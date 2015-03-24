@@ -504,10 +504,10 @@ class eq2progress_portal extends portal_generic {
 		if ($acid == '2521428217') {$malice6 = $malice6 + 1; $malice62 =$kdate.'<font color="808080"><strike>Tserrina Syl\'tor</strike></font><br>';}
 		if ($acid == '3780034671') {$malice6 = $malice6 + 1; $malice63 =$kdate.'<font color="808080"><strike>Ritual Keeper V\'derin</strike></font><br>';}
 		//Altar of Malice Avatars - The Precipice of Power
-		if ($acid == '0') {$aoma = $aoma + 1; $aoma1 =$kdate.'<font color="808080"><strike>Cazic-Thule</strike></font><br>';}
-		if ($acid == '0') {$aoma = $aoma + 1; $aoma2 =$kdate.'<font color="808080"><strike>Fennin Ro</strike></font><br>';}
-		if ($acid == '0') {$aoma = $aoma + 1; $aoma3 =$kdate.'<font color="808080"><strike>Karana</strike></font><br>';}
-		if ($acid == '0') {$aoma = $aoma + 1; $aoma4 =$kdate.'<font color="808080"><strike>The Tribunal</strike></font><br>';}
+		if ($acid == '3312622728') {$aoma = $aoma + 1; $aoma1 =$kdate.'<font color="808080"><strike>Cazic-Thule</strike></font><br>';}
+		if ($acid == '1264497483') {$aoma = $aoma + 1; $aoma2 =$kdate.'<font color="808080"><strike>Fennin Ro</strike></font><br>';}
+		if ($acid == '2302657105') {$aoma = $aoma + 1; $aoma3 =$kdate.'<font color="808080"><strike>Karana</strike></font><br>';}
+		if ($acid == '3211824092') {$aoma = $aoma + 1; $aoma4 =$kdate.'<font color="808080"><strike>The Tribunal</strike></font><br>';}
 		}
 		$killslist = array($c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8,$c9,$contested,
 						   $ar1,$ar2,$ar3,$ar4,$ar5,$ar6,$ar7,$ar8,$ar9,$ar10,$arena,
