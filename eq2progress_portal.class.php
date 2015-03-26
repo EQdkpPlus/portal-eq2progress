@@ -17,6 +17,7 @@
  * Modified Version of Hoofy's mybars progression module
  * This version populates the guild raid achievements from the Data Api
  *
+ * V3.1 Added Precipice of Power Avatars
  * V3.0 Eqdkp+ 2.0 Version of EQ2 Progress
  * V2.0 Added Altar of Malice Raid Zones
  * V1.9 Fixed Bristlebane Achievement ID - Sony changed it from Beta
@@ -40,7 +41,7 @@ class eq2progress_portal extends portal_generic {
 	protected static $path		= 'eq2progress';
 	protected static $data		= array(
 		'name'			=> 'EQ2 Progression',
-		'version'		=> '3.0',
+		'version'		=> '3.1',
 		'author'		=> 'Darkmaeg',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Everquest 2 Progression',
@@ -326,8 +327,8 @@ class eq2progress_portal extends portal_generic {
 		$malice53=$spacer.'<font color="white">Virtuoso Edgar V\'Zann</font><br>'; $malice54=$spacer.'<font color="white">Sacrificer Aevila D\'Serin</font><br>'; 
 		$malice55=$spacer.'<font color="white">Inquisitor Soronigus</font><br>'; 
 		$malice6val=$this->user->lang('eq2progress_f_eq2progress_altar6');
-		$malice61=$spacer.'<font color="white">Construct of Malice</font><br>'; $malice62=$spacer.'<font color="white">Tserrina Syl\'tor</font><br>';		
-		$malice63=$spacer.'<font color="white">Ritual Keeper V\'derin</font><br>'; 
+		$malice61=$spacer.'<font color="white">Ritual Keeper V\'derin</font><br>'; $malice62=$spacer.'<font color="white">Tserrina Syl\'tor</font><br>'; 
+		$malice63=$spacer.'<font color="white">Construct of Malice</font><br>'; 		
 		$aomaval=$this->user->lang('eq2progress_f_eq2progress_aomavatar');
 		$aoma1=$spacer.'<font color="white">Cazic-Thule</font><br>'; $aoma2=$spacer.'<font color="white">Fennin Ro</font><br>'; 
 		$aoma3=$spacer.'<font color="white">Karana</font><br>'; $aoma4=$spacer.'<font color="white">The Tribunal</font><br>';
@@ -500,9 +501,9 @@ class eq2progress_portal extends portal_generic {
 		if ($acid == '3861054582') {$malice5 = $malice5 + 1; $malice54 =$kdate.'<font color="808080"><strike>Sacrificer Aevila D\'Serin</strike></font><br>';}		
 		if ($acid == '2133480908') {$malice5 = $malice5 + 1; $malice55 =$kdate.'<font color="808080"><strike>Inquisitor Soronigus</strike></font><br>';}
 		//AoM - Ossuary: The Altar of Malice
-		if ($acid == '116845928')  {$malice6 = $malice6 + 1; $malice61 =$kdate.'<font color="808080"><strike>Construct of Malice</strike></font><br>';}
+		if ($acid == '3780034671') {$malice6 = $malice6 + 1; $malice61 =$kdate.'<font color="808080"><strike>Ritual Keeper V\'derin</strike></font><br>';}
 		if ($acid == '2521428217') {$malice6 = $malice6 + 1; $malice62 =$kdate.'<font color="808080"><strike>Tserrina Syl\'tor</strike></font><br>';}
-		if ($acid == '3780034671') {$malice6 = $malice6 + 1; $malice63 =$kdate.'<font color="808080"><strike>Ritual Keeper V\'derin</strike></font><br>';}
+		if ($acid == '116845928')  {$malice6 = $malice6 + 1; $malice63 =$kdate.'<font color="808080"><strike>Construct of Malice</strike></font><br>';}
 		//Altar of Malice Avatars - The Precipice of Power
 		if ($acid == '3312622728') {$aoma = $aoma + 1; $aoma1 =$kdate.'<font color="808080"><strike>Cazic-Thule</strike></font><br>';}
 		if ($acid == '1264497483') {$aoma = $aoma + 1; $aoma2 =$kdate.'<font color="808080"><strike>Fennin Ro</strike></font><br>';}
