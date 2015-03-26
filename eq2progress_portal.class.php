@@ -495,7 +495,7 @@ class eq2progress_portal extends portal_generic {
 		if ($acid == '54563069')   {$malice4 = $malice4 + 1; $malice44 =$kdate.'<font color="808080"><strike>Farozth Ssravizh</strike></font><br>';}
 		if ($acid == '3981373905') {$malice4 = $malice4 + 1; $malice45 =$kdate.'<font color="808080"><strike>Gomrim, Zwebek, Tonnin, and Yermon</strike></font><br>';}
 		//AoM - Ossuary: Cathedral of Bones
-		if ($acid == '1434280382') {$malice5 = $malice5 + 1; $malice51 =$kdate.'<font color="808080"><strike>Primordial Ritualist Villandre V\'Zher</strike></font><br>';}
+		if ($acid == '1434280382' or $acid == '2017956309') {$malice5 = $malice5 + 1; $malice51 =$kdate.'<font color="808080"><strike>Primordial Ritualist Villandre V\'Zher</strike></font><br>';}
 		if ($acid == '255893827')  {$malice5 = $malice5 + 1; $malice52 =$kdate.'<font color="808080"><strike>Protector of Bones</strike></font><br>';}
 		if ($acid == '2435069152') {$malice5 = $malice5 + 1; $malice53 =$kdate.'<font color="808080"><strike>Virtuoso Edgar V\'Zann</strike></font><br>';}
 		if ($acid == '3861054582') {$malice5 = $malice5 + 1; $malice54 =$kdate.'<font color="808080"><strike>Sacrificer Aevila D\'Serin</strike></font><br>';}		
