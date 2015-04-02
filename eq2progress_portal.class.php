@@ -17,6 +17,7 @@
  * Modified Version of Hoofy's mybars progression module
  * This version populates the guild raid achievements from the Data Api
  *
+ * V3.2 Changed API from SOE to Daybreak
  * V3.1 Added Precipice of Power Avatars
  * V3.0 Eqdkp+ 2.0 Version of EQ2 Progress
  * V2.0 Added Altar of Malice Raid Zones
@@ -41,7 +42,7 @@ class eq2progress_portal extends portal_generic {
 	protected static $path		= 'eq2progress';
 	protected static $data		= array(
 		'name'			=> 'EQ2 Progression',
-		'version'		=> '3.1.0',
+		'version'		=> '3.2',
 		'author'		=> 'Darkmaeg',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Everquest 2 Progression',
@@ -217,14 +218,14 @@ class eq2progress_portal extends portal_generic {
 		$arenamax = 10; $contmax = 9; $harrowmax = 12; $sleepermax = 12; $altarmax = 6; $powmax = 7; $dreadmax = 3; $sirenmax = 9; $djinnmax = 2;
 		$tovmax = 15; $asmax = 11; $tovcmax = 2; $kingmax = 3; $dreadscalemax = 8; $deathtollmax = 5; $agesendmax = 4; 
 		$malice1max = 4; $malice2max = 3; $malice3max = 3; $malice4max = 5; $malice5max = 5; $malice6max = 3; $aomamax = 4;
-		$this->game->new_object('eq2_soe', 'soe', array());
-		if(!is_object($this->game->obj['soe'])) return "";
-		$progdata = $this->game->obj['soe']->guildinfo($this->config->get('guildtag'), $this->config->get('uc_servername'), false);
+		$this->game->new_object('eq2_daybreak', 'daybreak', array());
+		if(!is_object($this->game->obj['daybreak'])) return "";
+		$progdata = $this->game->obj['daybreak']->guildinfo($this->config->get('guildtag'), $this->config->get('uc_servername'), false);
 		$achieve  = $progdata['guild_list'][0]['achievement_list'];	
 		$ktot = count($achieve);
-		$this->game->new_object('eq2_soe', 'soe', array($this->config->get('uc_server_loc'), $this->config->get('uc_data_lang')));
-		if(!is_object($this->game->obj['soe'])) return "";
-		$guilddata = $this->game->obj['soe']->guildinfo($this->config->get('guildtag'), $this->config->get('servername'), false);
+		$this->game->new_object('eq2_daybreak', 'daybreak', array($this->config->get('uc_server_loc'), $this->config->get('uc_data_lang')));
+		if(!is_object($this->game->obj['daybreak'])) return "";
+		$guilddata = $this->game->obj['daybreak']->guildinfo($this->config->get('guildtag'), $this->config->get('servername'), false);
 		$achieve = $guilddata['guild_list'][0]['achievement_list'];	
 		$gdata 	  = $guilddata['guild_list'][0];
 		$ktot = count($achieve);
