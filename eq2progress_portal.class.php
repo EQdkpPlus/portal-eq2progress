@@ -17,6 +17,7 @@
  * Modified Version of Hoofy's mybars progression module
  * This version populates the guild raid achievements from the Data Api
  *
+ * V3.3 Added Far Seas Distillery
  * V3.2 Changed API from SOE to Daybreak
  * V3.1 Added Precipice of Power Avatars
  * V3.0 Eqdkp+ 2.0 Version of EQ2 Progress
@@ -42,7 +43,7 @@ class eq2progress_portal extends portal_generic {
 	protected static $path		= 'eq2progress';
 	protected static $data		= array(
 		'name'			=> 'EQ2 Progression',
-		'version'		=> '3.2',
+		'version'		=> '3.3',
 		'author'		=> 'Darkmaeg',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Everquest 2 Progression',
@@ -175,6 +176,11 @@ class eq2progress_portal extends portal_generic {
 				'language'	=> 'eq2progress_altar6',
 				'type'	=> 'radio',
 			),
+			'eq2progress_fsdistillery'	=> array(
+				'name'		=> 'eq2progress_fsdistillery',
+				'language'	=> 'eq2progress_fsdistillery',
+				'type'	=> 'radio',
+			),
 			'eq2progress_date'	=> array(
 				'name'		=> 'eq2progress_date',
 				'language'	=> 'eq2progress_date',
@@ -212,12 +218,13 @@ class eq2progress_portal extends portal_generic {
 		if (($this->config('eq2progress_altar4')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone21 = TRUE); }
 		if (($this->config('eq2progress_altar5')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone22 = TRUE); }
 		if (($this->config('eq2progress_altar6')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone23 = TRUE); }
+		if (($this->config('eq2progress_fsdistillery')) == TRUE )	{ ($maxbars = $maxbars + 1); ($zone24 = TRUE); }
 		$arena = 0; $contested = 0; $harrows = 0; $sleeper = 0; $altar = 0; $pow = 0; $dread = 0; $sirens = 0; $djinn= 0;
 		$tov = 0; $as = 0; $tovc = 0; $king = 0; $dreadscale = 0; $deathtoll = 0; $agesend = 0; 
-		$malice1 = 0; $malice2 = 0; $malice3 = 0; $malice4 = 0; $malice5 = 0; $malice6 = 0; $aoma = 0;
+		$malice1 = 0; $malice2 = 0; $malice3 = 0; $malice4 = 0; $malice5 = 0; $malice6 = 0; $aoma = 0; $fsd = 0;
 		$arenamax = 10; $contmax = 9; $harrowmax = 12; $sleepermax = 12; $altarmax = 6; $powmax = 7; $dreadmax = 3; $sirenmax = 9; $djinnmax = 2;
 		$tovmax = 15; $asmax = 11; $tovcmax = 2; $kingmax = 3; $dreadscalemax = 8; $deathtollmax = 5; $agesendmax = 4; 
-		$malice1max = 4; $malice2max = 3; $malice3max = 3; $malice4max = 5; $malice5max = 5; $malice6max = 3; $aomamax = 4;
+		$malice1max = 4; $malice2max = 3; $malice3max = 3; $malice4max = 5; $malice5max = 5; $malice6max = 3; $aomamax = 4; $fsdmax = 10;
 		$this->game->new_object('eq2_daybreak', 'daybreak', array());
 		if(!is_object($this->game->obj['daybreak'])) return "";
 		$progdata = $this->game->obj['daybreak']->guildinfo($this->config->get('guildtag'), $this->config->get('uc_servername'), false);
@@ -333,6 +340,12 @@ class eq2progress_portal extends portal_generic {
 		$aomaval=$this->user->lang('eq2progress_f_eq2progress_aomavatar');
 		$aoma1=$spacer.'<font color="white">Cazic-Thule</font><br>'; $aoma2=$spacer.'<font color="white">Fennin Ro</font><br>'; 
 		$aoma3=$spacer.'<font color="white">Karana</font><br>'; $aoma4=$spacer.'<font color="white">The Tribunal</font><br>';
+		$fsdval=$this->user->lang('eq2progress_f_eq2progress_fsdistillery');
+		$fsd1=$spacer.'<font color="white">Brutas the Imbiber</font><br>'; $fsd2=$spacer.'<font color="white">Captain Mergin</font><br>'; 	
+		$fsd3=$spacer.'<font color="white">Swabber Rotgut</font><br>'; $fsd4=$spacer.'<font color="white">Bull McCleran</font><br>'; 	
+		$fsd5=$spacer.'<font color="white">Charanda</font><br>'; $fsd6=$spacer.'<font color="white">Kildiun the Drunkard</font><br>'; 	
+		$fsd7=$spacer.'<font color="white">Pirate Shaman Snaggletooth</font><br>'; $fsd8=$spacer.'<font color="white">Brunhildre the Wench</font><br>'; 	
+		$fsd9=$spacer.'<font color="white">Danacio the Witchdoctor</font><br>'; $fsd10=$spacer.'<font color="white">Baz the Illusionist</font><br>'; 		
 		//Check which have been killed
 		$killslist = $this->pdc->get('portal.module.eq2progress.'.$this->root_path);
 				if (!$killslist){
@@ -510,6 +523,17 @@ class eq2progress_portal extends portal_generic {
 		if ($acid == '1264497483') {$aoma = $aoma + 1; $aoma2 =$kdate.'<font color="808080"><strike>Fennin Ro</strike></font><br>';}
 		if ($acid == '2302657105') {$aoma = $aoma + 1; $aoma3 =$kdate.'<font color="808080"><strike>Karana</strike></font><br>';}
 		if ($acid == '3211824092') {$aoma = $aoma + 1; $aoma4 =$kdate.'<font color="808080"><strike>The Tribunal</strike></font><br>';}
+		//Far Seas Distillery
+		if ($acid == '615137073') {$fsd = $fsd + 1; $fsd1 =$kdate.'<font color="808080"><strike>Brutas the Imbiber</strike></font><br>';}
+		if ($acid == '3399769629') {$fsd = $fsd + 1; $fsd2 =$kdate.'<font color="808080"><strike>Captain Mergin</strike></font><br>';}
+		if ($acid == '1403850663')  {$fsd = $fsd + 1; $fsd3 =$kdate.'<font color="808080"><strike>Swabber Rotgut</strike></font><br>';}
+		if ($acid == '3134106258') {$fsd = $fsd + 1; $fsd4 =$kdate.'<font color="808080"><strike>Bull McCleran</strike></font><br>';}
+		if ($acid == '3452541444') {$fsd = $fsd + 1; $fsd5 =$kdate.'<font color="808080"><strike>Charanda</strike></font><br>';}
+		if ($acid == '1475875915') {$fsd = $fsd + 1; $fsd6 =$kdate.'<font color="808080"><strike>Kildiun the Drunkard</strike></font><br>';}
+		if ($acid == '600308520') {$fsd = $fsd + 1; $fsd7 =$kdate.'<font color="808080"><strike>Pirate Shaman Snaggletooth</strike></font><br>';}
+		if ($acid == '1421921214') {$fsd = $fsd + 1; $fsd8 =$kdate.'<font color="808080"><strike>Brunhildre the Wench</strike></font><br>';}
+		if ($acid == '3011045049') {$fsd = $fsd + 1; $fsd9 =$kdate.'<font color="808080"><strike>Danacio the Witchdoctor</strike></font><br>';}
+		if ($acid == '3296712239') {$fsd = $fsd + 1; $fsd10=$kdate.'<font color="808080"><strike>Baz the Illusionist</strike></font><br>';}
 		}
 		$killslist = array($c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8,$c9,$contested,
 						   $ar1,$ar2,$ar3,$ar4,$ar5,$ar6,$ar7,$ar8,$ar9,$ar10,$arena,
@@ -533,7 +557,8 @@ class eq2progress_portal extends portal_generic {
 						   $malice31,$malice32,$malice33,$malice3,
 						   $malice41,$malice42,$malice43,$malice44,$malice45,$malice4,
 						   $malice51,$malice52,$malice53,$malice54,$malice55,$malice5,
-						   $malice61,$malice62,$malice63,$malice6
+						   $malice61,$malice62,$malice63,$malice6,
+						   $fsd1,$fsd2,$fsd3,$fsd4,$fsd5,$fsd6,$fsd7,$fsd8,$fsd9,$fsd10,$fsd
 						   );
 		$this->pdc->put('portal.module.eq2progress.'.$this->root_path, $killslist, 3600);
 				}
@@ -590,6 +615,8 @@ class eq2progress_portal extends portal_generic {
 		$zonetotal22 = ($killslist[163]);
 		$mal6 = ($killslist[164].$killslist[165].$killslist[166]);
 		$zonetotal23 = ($killslist[167]);
+		$fsdbb = ($killslist[168].$killslist[169].$killslist[170].$killslist[171].$killslist[172].$killslist[173].$killslist[174].$killslist[175].$killslist[176].$killslist[177]);
+		$zonetotal24 = ($killslist[178]);
 		$zonename1 = $cval; 	      $zonemax1 = $contmax;        $zonetip1 = $contes;
 		$zonename2 = $arval; 	      $zonemax2 = $arenamax;       $zonetip2 = $gods;
 		$zonename3 = $hval;  	      $zonemax3 = $harrowmax;      $zonetip3 = $har;
@@ -613,8 +640,9 @@ class eq2progress_portal extends portal_generic {
 		$zonename21 = $malice4val;    $zonemax21 = $malice4max;    $zonetip21 = $mal4;
 		$zonename22 = $malice5val;    $zonemax22 = $malice5max;    $zonetip22 = $mal5;
 		$zonename23 = $malice6val;    $zonemax23 = $malice6max;    $zonetip23 = $mal6;
+		$zonename24 = $fsdval;        $zonemax24 = $fsdmax;        $zonetip24 = $fsdbb;
 		$out = '';
-			for($i=1;$i<=23;$i++) {
+			for($i=1;$i<=24;$i++) {
 			$check = ${"zone".$i};
 			if ($check == TRUE) {
 			$text = ${"zonename".$i}; $value = ${"zonetotal".$i}; $max = ${"zonemax".$i}; $tooltip = ${"zonetip".$i};	
@@ -650,5 +678,4 @@ class eq2progress_portal extends portal_generic {
 		return new htooltip('eq2progress_tt'.$num, $tooltipopts);
 	}
 }
-
 ?>
