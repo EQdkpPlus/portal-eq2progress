@@ -46,6 +46,7 @@ $lang = array(
 	'eq2progress_f_eq2progress_altar6'      => 'Altar der Bosheit', // Altar of Malice
 	'eq2progress_f_eq2progress_aomavatar'   => 'Precipice of Power',
 	'eq2progress_f_eq2progress_fsdistillery'=> 'Far Seas Distillery',
+	'eq2progress_f_eq2progress_freethinkers'=> 'Echoes of Faydwer',
 	'eq2progress_f_eq2progress_date'  	=> 'Show Date Killed?<BR>*Note: Data is updated every 24 hours.<BR>Changing date setting will take effect next update.',
 );
 ?>
