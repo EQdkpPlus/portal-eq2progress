@@ -17,6 +17,7 @@
  * Modified Version of Hoofy's mybars progression module
  * This version populates the guild raid achievements from the Data Api
  *
+ * V3.5 Added Brell Serilis
  * V3.4 Added Fabled Freethinker's Hideout
  * V3.3 Added Far Seas Distillery
  * V3.2 Changed API from SOE to Daybreak
@@ -44,7 +45,7 @@ class eq2progress_portal extends portal_generic {
 	protected static $path		= 'eq2progress';
 	protected static $data		= array(
 		'name'			=> 'EQ2 Progression',
-		'version'		=> '3.4',
+		'version'		=> '3.5',
 		'author'		=> 'Darkmaeg',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Everquest 2 Progression',
@@ -230,7 +231,7 @@ class eq2progress_portal extends portal_generic {
 		$tov = 0; $as = 0; $tovc = 0; $king = 0; $dreadscale = 0; $deathtoll = 0; $agesend = 0; $malice1 = 0; $malice2 = 0; 
 		$malice3 = 0; $malice4 = 0; $malice5 = 0; $malice6 = 0; $aoma = 0; $fsd = 0; $eof = 0;
 		$arenamax = 10; $contmax = 9; $harrowmax = 12; $sleepermax = 12; $altarmax = 6; $powmax = 7; $dreadmax = 3; $sirenmax = 9; $djinnmax = 2; $eofmax = 8; $tovmax = 15; $asmax = 11; $tovcmax = 2; $kingmax = 3; $dreadscalemax = 8; $deathtollmax = 5; $agesendmax = 4; $malice1max = 4; $malice2max = 3; $malice3max = 3; $malice4max = 5; $malice5max = 5; $malice6max = 3; 
-		$aomamax = 4; $fsdmax = 10;
+		$aomamax = 5; $fsdmax = 10;
 		$this->game->new_object('eq2_daybreak', 'daybreak', array());
 		if(!is_object($this->game->obj['daybreak'])) return "";
 		$progdata = $this->game->obj['daybreak']->guildinfo($this->config->get('guildtag'), $this->config->get('uc_servername'), false);
@@ -344,8 +345,9 @@ class eq2progress_portal extends portal_generic {
 		$malice61=$spacer.'<font color="white">Ritual Keeper V\'derin</font><br>'; $malice62=$spacer.'<font color="white">Tserrina Syl\'tor</font><br>'; 
 		$malice63=$spacer.'<font color="white">Construct of Malice</font><br>'; 		
 		$aomaval=$this->user->lang('eq2progress_f_eq2progress_aomavatar');
-		$aoma1=$spacer.'<font color="white">Cazic-Thule</font><br>'; $aoma2=$spacer.'<font color="white">Fennin Ro</font><br>'; 
-		$aoma3=$spacer.'<font color="white">Karana</font><br>'; $aoma4=$spacer.'<font color="white">The Tribunal</font><br>';
+		$aoma1=$spacer.'<font color="white">Brell Serilis</font><br>'; $aoma2=$spacer.'<font color="white">Cazic-Thule</font><br>'; 
+		$aoma3=$spacer.'<font color="white">Fennin Ro</font><br>'; $aoma4=$spacer.'<font color="white">Karana</font><br>'; 
+		$aoma5=$spacer.'<font color="white">The Tribunal</font><br>';
 		$fsdval=$this->user->lang('eq2progress_f_eq2progress_fsdistillery');
 		$fsd1=$spacer.'<font color="white">Baz the Illusionist</font><br>'; $fsd2=$spacer.'<font color="white">Danacio the Witchdoctor</font><br>'; $fsd3=$spacer.'<font color="white">Brunhildre the Wench</font><br>'; 
 		$fsd4=$spacer.'<font color="white">Pirate Shaman Snaggletooth</font><br>'; $fsd5=$spacer.'<font color="white">Kildiun the Drunkard</font><br>'; $fsd6=$spacer.'<font color="white">Charanda</font><br>'; $fsd7=$spacer.'<font color="white">Bull McCleran</font><br>'; $fsd8=$spacer.'<font color="white">Swabber Rotgut</font><br>'; $fsd9=$spacer.'<font color="white">Captain Mergin</font><br>'; $fsd10=$spacer.'<font color="white">Brutas the Imbiber</font><br>'; 
@@ -531,10 +533,11 @@ class eq2progress_portal extends portal_generic {
 		if ($acid == '2521428217') {$malice6 = $malice6 + 1; $malice62 =$kdate.'<font color="808080"><strike>Tserrina Syl\'tor</strike></font><br>';}
 		if ($acid == '116845928')  {$malice6 = $malice6 + 1; $malice63 =$kdate.'<font color="808080"><strike>Construct of Malice</strike></font><br>';}
 		//Altar of Malice Avatars - The Precipice of Power
-		if ($acid == '3312622728') {$aoma = $aoma + 1; $aoma1 =$kdate.'<font color="808080"><strike>Cazic-Thule</strike></font><br>';}
-		if ($acid == '1264497483') {$aoma = $aoma + 1; $aoma2 =$kdate.'<font color="808080"><strike>Fennin Ro</strike></font><br>';}
-		if ($acid == '2302657105') {$aoma = $aoma + 1; $aoma3 =$kdate.'<font color="808080"><strike>Karana</strike></font><br>';}
-		if ($acid == '3211824092') {$aoma = $aoma + 1; $aoma4 =$kdate.'<font color="808080"><strike>The Tribunal</strike></font><br>';}
+		if ($acid == '3785130348') {$aoma = $aoma + 1; $aoma1 =$kdate.'<font color="808080"><strike>Brell Serilis</strike></font><br>';}
+		if ($acid == '3312622728') {$aoma = $aoma + 1; $aoma2 =$kdate.'<font color="808080"><strike>Cazic-Thule</strike></font><br>';}
+		if ($acid == '1264497483') {$aoma = $aoma + 1; $aoma3 =$kdate.'<font color="808080"><strike>Fennin Ro</strike></font><br>';}
+		if ($acid == '2302657105') {$aoma = $aoma + 1; $aoma4 =$kdate.'<font color="808080"><strike>Karana</strike></font><br>';}
+		if ($acid == '3211824092') {$aoma = $aoma + 1; $aoma5 =$kdate.'<font color="808080"><strike>The Tribunal</strike></font><br>';}
 		//Far Seas Distillery
 		if ($acid == '3296712239') {$fsd = $fsd + 1; $fsd1=$kdate.'<font color="808080"><strike>Baz the Illusionist</strike></font><br>';}
 		if ($acid == '3011045049') {$fsd = $fsd + 1; $fsd2 =$kdate.'<font color="808080"><strike>Danacio the Witchdoctor</strike></font><br>';}
@@ -572,7 +575,7 @@ class eq2progress_portal extends portal_generic {
 						   $dreadscale1,$dreadscale2,$dreadscale3,$dreadscale4,$dreadscale5,$dreadscale6,$dreadscale7,$dreadscale8,$dreadscale,
 						   $deathtoll1,$deathtoll2,$deathtoll3,$deathtoll4,$deathtoll5,$deathtoll,
 						   $agesend1,$agesend2,$agesend3,$agesend4,$agesend,
-						   $aoma1,$aoma2,$aoma3,$aoma4,$aoma,
+						   $aoma1,$aoma2,$aoma3,$aoma4,$aoma5,$aoma,
 						   $malice11,$malice12,$malice13,$malice14,$malice1,
 						   $malice21,$malice22,$malice23,$malice2,
 						   $malice31,$malice32,$malice33,$malice3,
@@ -623,24 +626,24 @@ class eq2progress_portal extends portal_generic {
 		$zonetotal15 = ($killslist[128]);
 		$agesen = ($killslist[129].$killslist[130].$killslist[131].$killslist[132]);
 		$zonetotal16 = ($killslist[133]);
-        $aomavatar = ($killslist[134].$killslist[135].$killslist[136].$killslist[137]);
-		$zonetotal17 = ($killslist[138]);
-		$mal1 = ($killslist[139].$killslist[140].$killslist[141].$killslist[142]);
-		 $zonetotal18 = ($killslist[143]);
-		$mal2 = ($killslist[144].$killslist[145].$killslist[146]);
-		$zonetotal19 = ($killslist[147]);
-		$mal3 = ($killslist[148].$killslist[149].$killslist[150]);
-		$zonetotal20 = ($killslist[151]);
-		$mal4 = ($killslist[152].$killslist[153].$killslist[154].$killslist[155].$killslist[156]);
-		$zonetotal21 = ($killslist[157]);
-		$mal5 = ($killslist[158].$killslist[159].$killslist[160].$killslist[161].$killslist[162]);
-		$zonetotal22 = ($killslist[163]);
-		$mal6 = ($killslist[164].$killslist[165].$killslist[166]);
-		$zonetotal23 = ($killslist[167]);
-		$fsdbb = ($killslist[168].$killslist[169].$killslist[170].$killslist[171].$killslist[172].$killslist[173].$killslist[174].$killslist[175].$killslist[176].$killslist[177]);
-		$zonetotal24 = ($killslist[178]);
-		$eoff = ($killslist[179].$killslist[180].$killslist[181].$killslist[182].$killslist[183].$killslist[184].$killslist[185].$killslist[186]);
-		$zonetotal25 = ($killslist[187]);
+        $aomavatar = ($killslist[134].$killslist[135].$killslist[136].$killslist[137].$killslist[138]);
+		$zonetotal17 = ($killslist[139]);
+		$mal1 = ($killslist[140].$killslist[141].$killslist[142].$killslist[143]);
+		 $zonetotal18 = ($killslist[144]);
+		$mal2 = ($killslist[145].$killslist[146].$killslist[147]);
+		$zonetotal19 = ($killslist[148]);
+		$mal3 = ($killslist[149].$killslist[150].$killslist[151]);
+		$zonetotal20 = ($killslist[152]);
+		$mal4 = ($killslist[153].$killslist[154].$killslist[155].$killslist[156].$killslist[157]);
+		$zonetotal21 = ($killslist[158]);
+		$mal5 = ($killslist[159].$killslist[160].$killslist[161].$killslist[162].$killslist[163]);
+		$zonetotal22 = ($killslist[164]);
+		$mal6 = ($killslist[165].$killslist[166].$killslist[167]);
+		$zonetotal23 = ($killslist[168]);
+		$fsdbb = ($killslist[169].$killslist[170].$killslist[171].$killslist[172].$killslist[173].$killslist[174].$killslist[175].$killslist[176].$killslist[177].$killslist[178]);
+		$zonetotal24 = ($killslist[179]);
+		$eoff = ($killslist[180].$killslist[181].$killslist[182].$killslist[183].$killslist[184].$killslist[185].$killslist[186].$killslist[187]);
+		$zonetotal25 = ($killslist[188]);
 		$zonename1 = $cval; 	      $zonemax1 = $contmax;        $zonetip1 = $contes;
 		$zonename2 = $arval; 	      $zonemax2 = $arenamax;       $zonetip2 = $gods;
 		$zonename3 = $hval;  	      $zonemax3 = $harrowmax;      $zonetip3 = $har;
