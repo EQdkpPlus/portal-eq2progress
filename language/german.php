@@ -19,34 +19,58 @@
 if (!defined('EQDKP_INC')) {
 	die('You cannot access this file directly.');
 }
-//äöüß
+
 $lang = array(
 	'eq2progress_f_eq2progress_headtext'	=> 'Titel des Moduls',
-	'eq2progress_f_eq2progress_contested'	=> 'Avatare', //Avatar
-	'eq2progress_f_eq2progress_arena'	=> 'Arena der Götter', // Arena of the Gods
-	'eq2progress_f_eq2progress_harrows'	=> 'Harrow\'s End',
+	'eq2progress_f_eq2progress_shattered'	=> 'Shattered Lands',
+	'eq2progress_f_eq2progress_splitpaw'	=> 'Splitpaw Saga',
+	'eq2progress_f_eq2progress_desert' 		=> 'Desert of Flames',
+	'eq2progress_f_eq2progress_fallen'  	=> 'Fallen Dynasty',
+	'eq2progress_f_eq2progress_kingdom'		=> 'Kingdom of Sky',
+	'eq2progress_f_eq2progress_faydwer'  	=> 'Echoes of Faydwer',
+	'eq2progress_f_eq2progress_kunark'		=> 'Rise of Kunark',
+	'eq2progress_f_eq2progress_odyssey' 	=> 'The Shadow Odyssey',
+	'eq2progress_f_eq2progress_sentinel'	=> 'Sentinel\'s Fate',
+	'eq2progress_f_eq2progress_velious'		=> 'Destiny of Velious',
+	'eq2progress_f_eq2progress_chains'		=> 'Chains of Eternity',
+	'eq2progress_f_eq2progress_arena'		=> 'Arena of the Gods',
+	'eq2progress_f_eq2progress_contested'	=> 'Contested Avatars',
+	'eq2progress_f_eq2progress_veeshan'		=> 'Tears of Veeshan',
+	'eq2progress_f_eq2progress_altar'       => 'Altar of Malice',
+	'eq2progress_f_eq2progress_precipice'	=> 'Precipice of Power',
+	'eq2progress_f_eq2progress_terrors'  	=> 'Terrors of Thalumbra',
+	'eq2progress_f_eq2progress_contested'	=> 'Contested Avatars',
+	'eq2progress_f_eq2progress_arena'		=> 'Arena of the Gods',
+	'eq2progress_f_eq2progress_harrows'		=> 'Harrow\'s End',
 	'eq2progress_f_eq2progress_sleepers'	=> 'Sleeper\'s Tomb',
 	'eq2progress_f_eq2progress_abhorrence'	=> 'Altar of Abhorrence',
 	'eq2progress_f_eq2progress_plane'   	=> 'Plane of War',
 	'eq2progress_f_eq2progress_dreadcutter'	=> 'The Dreadcutter',
-	'eq2progress_f_eq2progress_sirens' 	=> 'Siren\'s Grotto',
-	'eq2progress_f_eq2progress_desert' 	=> 'Wüste der Flammen', // Desert of Flames
-	'eq2progress_f_eq2progress_veeshan' 	=> 'Tränen von Veeshan', // Temple of Veeshan
-	'eq2progress_f_eq2progress_accursed'	=> 'Verwünschten Allerheiligen', //Accursed Sanctum
-	'eq2progress_f_eq2progress_vesspyr'	=> 'Vesspyr Contested', //Vesspyr Contested 
-	'eq2progress_f_eq2progress_kingdom'	=> 'Kingdom of Sky',
-	'eq2progress_f_eq2progress_dreadscale'  => 'Dreadscale\'s Maw', //Der Schreckenschuppenschlund?
+	'eq2progress_f_eq2progress_sirens' 		=> 'Siren\'s Grotto',
+	'eq2progress_f_eq2progress_desert' 		=> 'Desert of Flames',
+	'eq2progress_f_eq2progress_veeshan' 	=> 'Temple of Veeshan',
+	'eq2progress_f_eq2progress_accursed'	=> 'Accursed Sanctum',
+	'eq2progress_f_eq2progress_vesspyr'		=> 'Vesspyr Contested',
+	'eq2progress_f_eq2progress_kingdom'		=> 'Kingdom of Sky',
+	'eq2progress_f_eq2progress_dreadscale'  => 'Dreadscale\'s Maw',
 	'eq2progress_f_eq2progress_deathtoll'   => 'Deathtoll',
-	'eq2progress_f_eq2progress_agesend'     => 'Ende des Zeitalters', //Age's End
+	'eq2progress_f_eq2progress_agesend'     => 'Age\'s End',
 	'eq2progress_f_eq2progress_altar1'      => 'Zavith\'Loa',
 	'eq2progress_f_eq2progress_altar2'      => 'Castle Highhold',
 	'eq2progress_f_eq2progress_altar3'      => 'Brokenskull Bay',
 	'eq2progress_f_eq2progress_altar4'      => 'Temple of Ssraeshza',
 	'eq2progress_f_eq2progress_altar5'      => 'Cathedral of Bones',
-	'eq2progress_f_eq2progress_altar6'      => 'Altar der Bosheit', // Altar of Malice
+	'eq2progress_f_eq2progress_altar6'      => 'Altar of Malice',
 	'eq2progress_f_eq2progress_aomavatar'   => 'Precipice of Power',
 	'eq2progress_f_eq2progress_fsdistillery'=> 'Far Seas Distillery',
-	'eq2progress_f_eq2progress_freethinkers'=> 'Echoes of Faydwer',
-	'eq2progress_f_eq2progress_date'  	=> 'Show Date Killed?<BR>*Note: Data is updated every 24 hours.<BR>Changing date setting will take effect next update.',
+	'eq2progress_f_eq2progress_freethinkers'=> 'Freethinker\'s Hideout',
+	'eq2progress_f_eq2progress_totcont'		=> 'Thalumbra Contested',
+	'eq2progress_f_eq2progress_tot1'		=> 'Bhoughbh\'s Folly',
+	'eq2progress_f_eq2progress_tot2'		=> 'Forge of Ashes',
+	'eq2progress_f_eq2progress_tot3'		=> 'Edge of Underfoot',
+	'eq2progress_f_eq2progress_tot4'		=> 'The Hive Mind',
+	'eq2progress_f_eq2progress_siege'       => 'The Siege',
+	'eq2progress_f_eq2progress_fcazic'      => 'Fabled Cazic Thule',
+	'eq2progress_f_eq2progress_date'	  	=> 'Show Date Killed?<BR>*Note: Data is updated every 24 hours.<BR>Changing date setting will take effect next update.',
 );
 ?>
