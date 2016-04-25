@@ -8,15 +8,18 @@
  * Date:		$Date: 2013-01-09 19:20:34 +0100 (Wed, 09 Jan 2013) $
  * -----------------------------------------------------------------------
  * @author		$Author: Darkmaeg $
- * @copyright	2006-2011 EQdkp-Plus Developer Team
+ * @copyright	2006-2015 EQdkp-Plus Developer Team
  * @link		http://eqdkp-plus.com
  * @package		eqdkp-plus
- * @version		$Rev: 00002 $
+ * @version		$Rev: 00037 $
  * 
- * $Id: eq2progress_portal.class.php 00002 2013-11-18 18:20:34Z Darkmaeg $
+ * $Id: eq2progress_portal.class.php 00036 2013-11-18 18:20:34Z Darkmaeg $
  * Modified Version of Hoofy's mybars progression module
  * This version populates the guild raid achievements from the Data Api
  *
+ * V3.8 Added The Siege / Removed TLE version
+ * V3.7 Added Terrors of Thalumbra
+ * V3.6 Combined TLE version
  * V3.5 Added Brell Serilis
  * V3.4 Added Fabled Freethinker's Hideout
  * V3.3 Added Far Seas Distillery
@@ -29,7 +32,7 @@
  * V1.7 Added Fabled Deathtoll
  * V1.6 Added Hidden mob in Temple of Veeshan: The Dreadscale's Maw
  * V1.5 Added Temple of Veeshan: The Dreadscale's Maw
- * V1.5 Added Contested X4 in High Keep
+ * V1.4 Added Contested X4 in High Keep
  * V1.3 Added Fabled Kingdom of Sky Zones
  *      Added admin menu to choose to display kill dates
  * V1.2 Added ToV Raid Zones, 3 New Contested Avatars, Arena of the Gods
@@ -45,13 +48,12 @@ class eq2progress_portal extends portal_generic {
 	protected static $path		= 'eq2progress';
 	protected static $data		= array(
 		'name'			=> 'EQ2 Progression',
-		'version'		=> '3.5',
+		'version'		=> '3.8',
 		'author'		=> 'Darkmaeg',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Everquest 2 Progression',
 		'multiple'		=> false,
 		'lang_prefix'	=> 'eq2progress_'
-		
 	);
 	protected static $positions = array('middle', 'left1', 'left2', 'right', 'bottom');
 	protected static $install	= array(
@@ -59,7 +61,6 @@ class eq2progress_portal extends portal_generic {
 		'defaultposition'	=> 'right',
 		'defaultnumber'		=> '7',
 	);
-	
 	protected static $apiLevel = 20;
 	public function get_settings($state) {
 			$settings = array(
@@ -188,6 +189,46 @@ class eq2progress_portal extends portal_generic {
 				'language'	=> 'eq2progress_freethinkers',
 				'type'	=> 'radio',
 			),
+			'eq2progress_totcont'	=> array(
+				'name'		=> 'eq2progress_totcont',
+				'language'	=> 'eq2progress_totcont',
+				'type'	=> 'radio',
+			),
+			'eq2progress_tot1'	=> array(
+				'name'		=> 'eq2progress_tot1',
+				'language'	=> 'eq2progress_tot1',
+				'type'	=> 'radio',
+			),
+			'eq2progress_tot2'	=> array(
+				'name'		=> 'eq2progress_tot2',
+				'language'	=> 'eq2progress_tot2',
+				'type'	=> 'radio',
+			),
+			'eq2progress_tot3'	=> array(
+				'name'		=> 'eq2progress_tot3',
+				'language'	=> 'eq2progress_tot3',
+				'type'	=> 'radio',
+			),
+			'eq2progress_tot4'	=> array(
+				'name'		=> 'eq2progress_tot4',
+				'language'	=> 'eq2progress_tot4',
+				'type'	=> 'radio',
+			),
+			'eq2progress_tot4'	=> array(
+				'name'		=> 'eq2progress_tot4',
+				'language'	=> 'eq2progress_tot4',
+				'type'	=> 'radio',
+			),
+			'eq2progress_siege'	=> array(
+				'name'		=> 'eq2progress_siege',
+				'language'	=> 'eq2progress_siege',
+				'type'	=> 'radio',
+			),
+			'eq2progress_fcazic'	=> array(
+				'name'		=> 'eq2progress_fcazic',
+				'language'	=> 'eq2progress_fcazic',
+				'type'	=> 'radio',
+			),
 			'eq2progress_date'	=> array(
 				'name'		=> 'eq2progress_date',
 				'language'	=> 'eq2progress_date',
@@ -196,11 +237,9 @@ class eq2progress_portal extends portal_generic {
 		);
 		return $settings;
 	}
-		
+			
 	public function output() {
-		if($this->config('eq2progress_headtext')){
-			$this->header = sanitize($this->config('eq2progress_headtext'));
-		}
+		if($this->config('eq2progress_headtext')){$this->header = sanitize($this->config('eq2progress_headtext'));}
 		$maxbars = 0;
 		if (($this->config('eq2progress_contested')) == True ) 		{ ($maxbars = $maxbars + 1); ($zone1 = TRUE); }
 		if (($this->config('eq2progress_arena')) == TRUE ) 			{ ($maxbars = $maxbars + 1); ($zone2 = TRUE); }
@@ -227,11 +266,19 @@ class eq2progress_portal extends portal_generic {
 		if (($this->config('eq2progress_altar6')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone23 = TRUE); }
 		if (($this->config('eq2progress_fsdistillery')) == TRUE )	{ ($maxbars = $maxbars + 1); ($zone24 = TRUE); }
 		if (($this->config('eq2progress_freethinkers')) == TRUE )	{ ($maxbars = $maxbars + 1); ($zone25 = TRUE); }
+		if (($this->config('eq2progress_totcont')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone26 = TRUE); }
+		if (($this->config('eq2progress_tot1')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone27 = TRUE); }
+		if (($this->config('eq2progress_tot2')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone28 = TRUE); }
+		if (($this->config('eq2progress_tot3')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone29 = TRUE); }
+		if (($this->config('eq2progress_tot4')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone30 = TRUE); }
+		if (($this->config('eq2progress_siege')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone31 = TRUE); }
+		if (($this->config('eq2progress_fcazic')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone32 = TRUE); }
 		$arena = 0; $contested = 0; $harrows = 0; $sleeper = 0; $altar = 0; $pow = 0; $dread = 0; $sirens = 0; $djinn= 0;
 		$tov = 0; $as = 0; $tovc = 0; $king = 0; $dreadscale = 0; $deathtoll = 0; $agesend = 0; $malice1 = 0; $malice2 = 0; 
-		$malice3 = 0; $malice4 = 0; $malice5 = 0; $malice6 = 0; $aoma = 0; $fsd = 0; $eof = 0;
+		$malice3 = 0; $malice4 = 0; $malice5 = 0; $malice6 = 0; $aoma = 0; $fsd = 0; $eof = 0; $totc = 0; $tot1 = 0;
+		$tot2 = 0; $tot3 = 0; $tot4 = 0; $siege = 0; $fcazic = 0;
 		$arenamax = 10; $contmax = 9; $harrowmax = 12; $sleepermax = 12; $altarmax = 6; $powmax = 7; $dreadmax = 3; $sirenmax = 9; $djinnmax = 2; $eofmax = 8; $tovmax = 15; $asmax = 11; $tovcmax = 2; $kingmax = 3; $dreadscalemax = 8; $deathtollmax = 5; $agesendmax = 4; $malice1max = 4; $malice2max = 3; $malice3max = 3; $malice4max = 5; $malice5max = 5; $malice6max = 3; 
-		$aomamax = 5; $fsdmax = 10;
+		$aomamax = 5; $fsdmax = 10; $totcmax = 1; $tot1max = 9; $tot2max = 8; $tot3max = 5; $tot4max = 8; $siegemax = 6; $fcazicmax = 1;
 		$this->game->new_object('eq2_daybreak', 'daybreak', array());
 		if(!is_object($this->game->obj['daybreak'])) return "";
 		$progdata = $this->game->obj['daybreak']->guildinfo($this->config->get('guildtag'), $this->config->get('uc_servername'), false);
@@ -263,7 +310,7 @@ class eq2progress_portal extends portal_generic {
 		$h5=$spacer.'<font color="white">Oligar of the Dead Challenge</font><br>'; $h6=$spacer.'<font color="white">Oligar of the Dead</font><br>';		
 		$h7=$spacer.'<font color="white">Fitzpitzle</font><br>'; $h8=$spacer.'<font color="white">Bastion Challenge</font><br>';		
 		$h9=$spacer.'<font color="white">Bastion</font><br>'; $h10=$spacer.'<font color="white">Construct of Souls</font><br>';		
-		$h11='<font color="white">Melanie Everling</font><br>';	$h12=$spacer.'<font color="white">Caerina the Lost</font><br>';	
+		$h11=$spacer.'<font color="white">Melanie Everling</font><br>';	$h12=$spacer.'<font color="white">Caerina the Lost</font><br>';	
 		$slval=$this->user->lang('eq2progress_f_eq2progress_sleepers');
 		$sl1=$spacer.'<font color="white">Amalgamon Challenge</font><br>'; $sl2=$spacer.'<font color="white">Eidolon the Hraashna</font><br>';
 		$sl3=$spacer.'<font color="white">Eidolon the Tukaarak</font><br>';	$sl4=$spacer.'<font color="white">Eidolon the Nanzata</font><br>';
@@ -342,8 +389,8 @@ class eq2progress_portal extends portal_generic {
 		$malice53=$spacer.'<font color="white">Virtuoso Edgar V\'Zann</font><br>'; $malice54=$spacer.'<font color="white">Sacrificer Aevila D\'Serin</font><br>'; 
 		$malice55=$spacer.'<font color="white">Inquisitor Soronigus</font><br>'; 
 		$malice6val=$this->user->lang('eq2progress_f_eq2progress_altar6');
-		$malice61=$spacer.'<font color="white">Ritual Keeper V\'derin</font><br>'; $malice62=$spacer.'<font color="white">Tserrina Syl\'tor</font><br>'; 
-		$malice63=$spacer.'<font color="white">Construct of Malice</font><br>'; 		
+		$malice61=$spacer.'<font color="white">Construct of Malice</font><br>'; $malice62=$spacer.'<font color="white">Tserrina Syl\'tor</font><br>'; 
+		$malice63=$spacer.'<font color="white">Ritual Keeper V\'derin</font><br>'; 
 		$aomaval=$this->user->lang('eq2progress_f_eq2progress_aomavatar');
 		$aoma1=$spacer.'<font color="white">Brell Serilis</font><br>'; $aoma2=$spacer.'<font color="white">Cazic-Thule</font><br>'; 
 		$aoma3=$spacer.'<font color="white">Fennin Ro</font><br>'; $aoma4=$spacer.'<font color="white">Karana</font><br>'; 
@@ -352,22 +399,43 @@ class eq2progress_portal extends portal_generic {
 		$fsd1=$spacer.'<font color="white">Baz the Illusionist</font><br>'; $fsd2=$spacer.'<font color="white">Danacio the Witchdoctor</font><br>'; $fsd3=$spacer.'<font color="white">Brunhildre the Wench</font><br>'; 
 		$fsd4=$spacer.'<font color="white">Pirate Shaman Snaggletooth</font><br>'; $fsd5=$spacer.'<font color="white">Kildiun the Drunkard</font><br>'; $fsd6=$spacer.'<font color="white">Charanda</font><br>'; $fsd7=$spacer.'<font color="white">Bull McCleran</font><br>'; $fsd8=$spacer.'<font color="white">Swabber Rotgut</font><br>'; $fsd9=$spacer.'<font color="white">Captain Mergin</font><br>'; $fsd10=$spacer.'<font color="white">Brutas the Imbiber</font><br>'; 
 		$eofval=$this->user->lang('eq2progress_f_eq2progress_freethinkers');
-		$eof1=$spacer.'<font color="white">Malkonis D\'Morte (Challenge)</font><br>'; 
-		$eof2=$spacer.'<font color="white">Treyloth D\'Kulvith (Challenge)</font><br>'; 
-		$eof3=$spacer.'<font color="white">Othysis Muravian (Challenge)</font><br>';
-		$eof4=$spacer.'<font color="white">Zylphax the Shredder (Challenge)</font><br>'; 
-		$eof5=$spacer.'<font color="white">Malkonis D\'Morte</font><br>'; 
-		$eof6=$spacer.'<font color="white">Treyloth D\'Kulvith</font><br>';
-		$eof7=$spacer.'<font color="white">Othysis Muravian</font><br>'; 
-		$eof8=$spacer.'<font color="white">Zylphax the Shredder</font><br>';
+		$eof1=$spacer.'<font color="white">Malkonis D\'Morte (Challenge)</font><br>'; $eof2=$spacer.'<font color="white">Treyloth D\'Kulvith (Challenge)</font><br>'; 
+		$eof3=$spacer.'<font color="white">Othysis Muravian (Challenge)</font><br>'; $eof4=$spacer.'<font color="white">Zylphax the Shredder (Challenge)</font><br>'; 
+		$eof5=$spacer.'<font color="white">Malkonis D\'Morte</font><br>'; $eof6=$spacer.'<font color="white">Treyloth D\'Kulvith</font><br>';
+		$eof7=$spacer.'<font color="white">Othysis Muravian</font><br>'; $eof8=$spacer.'<font color="white">Zylphax the Shredder</font><br>';
+		$totcval=$this->user->lang('eq2progress_f_eq2progress_totcont'); 
+		$totc1=$spacer.'<font color="white">Vanlith the Mysterious One</font><br>'; 
+		$totc2=$spacer.'<font color="white">Venekor</font><br>'; 
+		$tot1val=$this->user->lang('eq2progress_f_eq2progress_tot1');
+		$tot11=$spacer.'<font color="white">Bhoughbh Nova-Prime</font><br>'; $tot12=$spacer.'<font color="white">MCP-Powered Pulsar</font><br>'; 
+		$tot13=$spacer.'<font color="white">The Tinkered Abomination</font><br>'; $tot14=$spacer.'<font color="white">Hovercopter Hingebot</font><br>'; 
+		$tot15=$spacer.'<font color="white">The Malfunctioning Slaver</font><br>'; $tot16=$spacer.'<font color="white">Electroshock Grinder VIII</font><br>';
+		$tot17=$spacer.'<font color="white">Sentinel XXI</font><br>'; $tot18=$spacer.'<font color="white">Short-Circuited Construct Bot</font><br>'; $tot19=$spacer.'<font color="white">Bhoughbh Model XVII</font><br>';
+		$tot2val=$this->user->lang('eq2progress_f_eq2progress_tot2');
+		$tot21=$spacer.'<font color="white">Kyrus of the Old Ways</font><br>'; $tot22=$spacer.'<font color="white">The Forge Golem</font><br>'; 
+		$tot23=$spacer.'<font color="white">Captain Ashenfell</font><br>'; $tot24=$spacer.'<font color="white">Captain Graybeard</font><br>'; 
+		$tot25=$spacer.'<font color="white">Uigirf, Htardlem, and Omzzem</font><br>'; $tot26=$spacer.'<font color="white">Bereth Mathias</font><br>';
+		$tot27=$spacer.'<font color="white">Kiernun the Lyrical</font><br>'; $tot28=$spacer.'<font color="white">Cronnin & Dellmun</font><br>';
+		$tot3val=$this->user->lang('eq2progress_f_eq2progress_tot3');
+		$tot31=$spacer.'<font color="white">Iron Forged Constructs</font><br>'; $tot32=$spacer.'<font color="white">Jorik the Scourge</font><br>'; 
+		$tot33=$spacer.'<font color="white">Crohp the Mighty</font><br>'; $tot34=$spacer.'<font color="white">King Lockt</font><br>'; 
+		$tot35=$spacer.'<font color="white">Wedge Tinderton</font><br>';
+		$tot4val=$this->user->lang('eq2progress_f_eq2progress_tot4');
+		$tot41=$spacer.'<font color="white">Kraletus</font><br>'; $tot42=$spacer.'<font color="white">Ynonngozzz\'Koolbh</font><br>'; $tot43=$spacer.'<font color="white">The Polliwog</font><br>'; $tot44=$spacer.'<font color="white">Sath\'Oprusk</font><br>'; 
+		$tot45=$spacer.'<font color="white">The Psionists</font><br>'; $tot46=$spacer.'<font color="white">Ojuti the Vile</font><br>'; $tot47=$spacer.'<font color="white">Karith\'Ta</font><br>'; $tot48=$spacer.'<font color="white">Charrid the Mindwarper</font><br>';
+		$siegeval=$this->user->lang('eq2progress_f_eq2progress_siege'); 
+		$siege1=$spacer.'<font color="white">The Weapon of War</font><br>'; $siege2=$spacer.'<font color="white">Sanctifier Goortuk Challenge Mode</font><br>'; 
+		$siege3=$spacer.'<font color="white">Sanctifier Goortuk</font><br>'; $siege4=$spacer.'<font color="white">Durtung the Arm of War</font><br>'; 
+		$siege5=$spacer.'<font color="white">Kreelit, Caller of Hounds</font><br>'; $siege6=$spacer.'<font color="white">Fergul the Protector</font><br>';
+		$fcazicval=$this->user->lang('eq2progress_f_eq2progress_fcazic'); $fcazic1=$spacer.'<font color="white">Fabled Venekor</font><br>';
 		//Check which have been killed
 		$killslist = $this->pdc->get('portal.module.eq2progress.'.$this->root_path);
-				if (!$killslist){//559
+				if (!$killslist){
 		for ($a=0; $a<=$ktot; $a++) {
-		//$kdate = date('m/d/Y', $achieve[$a]['completedtimestamp']);
 		$kdate = "";
-		if (($this->config('eq2progress_date')) == TRUE ) 		{ ($stamp = date('m/d/Y', $achieve[$a]['completedtimestamp']));  
-																	  ($kdate = '<font color="white">'.$stamp.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>'); }
+		if (($this->config('eq2progress_date')) == TRUE ) 		
+		{ ($stamp = date('m/d/Y', $achieve[$a]['completedtimestamp'])); 
+        ($kdate = '<font color="white">'.$stamp.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>'); }
 		$acid = $achieve[$a]['id'];
 		//Dreadcutter
 		if ($acid == '3473349988') {$dread = $dread + 1; $d1 =$kdate.'<font color="808080"><strike>Omugra, Thazurus, & Vuzalg</strike></font><br>';} 
@@ -529,9 +597,9 @@ class eq2progress_portal extends portal_generic {
 		if ($acid == '3861054582') {$malice5 = $malice5 + 1; $malice54 =$kdate.'<font color="808080"><strike>Sacrificer Aevila D\'Serin</strike></font><br>';}		
 		if ($acid == '2133480908') {$malice5 = $malice5 + 1; $malice55 =$kdate.'<font color="808080"><strike>Inquisitor Soronigus</strike></font><br>';}
 		//AoM - Ossuary: The Altar of Malice
-		if ($acid == '3780034671') {$malice6 = $malice6 + 1; $malice61 =$kdate.'<font color="808080"><strike>Ritual Keeper V\'derin</strike></font><br>';}
+		if ($acid == '116845928')  {$malice6 = $malice6 + 1; $malice61 =$kdate.'<font color="808080"><strike>Construct of Malice</strike></font><br>';}
 		if ($acid == '2521428217') {$malice6 = $malice6 + 1; $malice62 =$kdate.'<font color="808080"><strike>Tserrina Syl\'tor</strike></font><br>';}
-		if ($acid == '116845928')  {$malice6 = $malice6 + 1; $malice63 =$kdate.'<font color="808080"><strike>Construct of Malice</strike></font><br>';}
+		if ($acid == '3780034671') {$malice6 = $malice6 + 1; $malice63 =$kdate.'<font color="808080"><strike>Ritual Keeper V\'derin</strike></font><br>';}
 		//Altar of Malice Avatars - The Precipice of Power
 		if ($acid == '3785130348') {$aoma = $aoma + 1; $aoma1 =$kdate.'<font color="808080"><strike>Brell Serilis</strike></font><br>';}
 		if ($acid == '3312622728') {$aoma = $aoma + 1; $aoma2 =$kdate.'<font color="808080"><strike>Cazic-Thule</strike></font><br>';}
@@ -546,18 +614,64 @@ class eq2progress_portal extends portal_generic {
 		if ($acid == '1475875915') {$fsd = $fsd + 1; $fsd5 =$kdate.'<font color="808080"><strike>Kildiun the Drunkard</strike></font><br>';}
 		if ($acid == '3452541444') {$fsd = $fsd + 1; $fsd6 =$kdate.'<font color="808080"><strike>Charanda</strike></font><br>';}
 		if ($acid == '3134106258') {$fsd = $fsd + 1; $fsd7 =$kdate.'<font color="808080"><strike>Bull McCleran</strike></font><br>';}
-		if ($acid == '1403850663')  {$fsd = $fsd + 1; $fsd8 =$kdate.'<font color="808080"><strike>Swabber Rotgut</strike></font><br>';}
+		if ($acid == '1403850663') {$fsd = $fsd + 1; $fsd8 =$kdate.'<font color="808080"><strike>Swabber Rotgut</strike></font><br>';}
 		if ($acid == '3399769629') {$fsd = $fsd + 1; $fsd9 =$kdate.'<font color="808080"><strike>Captain Mergin</strike></font><br>';}
-		if ($acid == '615137073') {$fsd = $fsd + 1; $fsd10 =$kdate.'<font color="808080"><strike>Brutas the Imbiber</strike></font><br>';}
+		if ($acid == '615137073')  {$fsd = $fsd + 1; $fsd10 =$kdate.'<font color="808080"><strike>Brutas the Imbiber</strike></font><br>';}
 		//Freethinkers
-		if ($acid == '99686993') {$eof = $eof + 1; $eof1 =$kdate.'<font color="808080"><strike>Malkonis D\'Morte (Challenge)</strike></font><br>';}
+		if ($acid == '99686993')   {$eof = $eof + 1; $eof1 =$kdate.'<font color="808080"><strike>Malkonis D\'Morte (Challenge)</strike></font><br>';}
 		if ($acid == '2412565810') {$eof = $eof + 1; $eof2 =$kdate.'<font color="808080"><strike>Treyloth D\'Kulvith (Challenge)</strike></font><br>';}
 		if ($acid == '4141058174') {$eof = $eof + 1; $eof3 =$kdate.'<font color="808080"><strike>Othysis Muravian (Challenge)</strike></font><br>';}
 		if ($acid == '1951259245') {$eof = $eof + 1; $eof4 =$kdate.'<font color="808080"><strike>Zylphax the Shredder (Challenge)</strike></font><br>';}
 		if ($acid == '19578004')   {$eof = $eof + 1; $eof5 =$kdate.'<font color="808080"><strike>Malkonis D\'Morte</strike></font><br>';}
 		if ($acid == '1874453956') {$eof = $eof + 1; $eof6 =$kdate.'<font color="808080"><strike>Treyloth D\'Kulvith</strike></font><br>';}
 		if ($acid == '2647006286') {$eof = $eof + 1; $eof7 =$kdate.'<font color="808080"><strike>Othysis Muravian</strike></font><br>';}
-		if ($acid == '3545123490') {$eof = $eof + 1; $eof8 =$kdate.'<font color="808080"><strike>Zylphax the Shredder</strike></font><br>';}
+		if ($acid == '3545123490') {$eof = $eof + 1; $eof8 =$kdate.'<font color="808080"><strike>Zylphax the 
+		Shredder</strike></font><br>';}
+		//Terrors of Thalumbra - Contested
+		if ($acid == '3418973156') {$totc = $totc + 1; $totc1 =$kdate.'<font color="808080"><strike>Vanlith the Mysterious One</strike></font><br>';}
+		if ($acid == '0') {$totc = $totc + 1; $totc2 =$kdate.'<font color="808080"><strike>Venekor</strike></font><br>';}
+		//Terrors of Thalumbra - Maldura: Bhoughbh's Folly
+		if ($acid == '2221464290') {$tot1 = $tot1 + 1; $tot11 =$kdate.'<font color="808080"><strike>Bhoughbh Nova-Prime</strike></font><br>';}
+		if ($acid == '4084198004') {$tot1 = $tot1 + 1; $tot12 =$kdate.'<font color="808080"><strike>MCP-Powered Pulsar</strike></font><br>';}
+		if ($acid == '1674639333') {$tot1 = $tot1 + 1; $tot13 =$kdate.'<font color="808080"><strike>The Tinkered Abomination</strike></font><br>';}
+		if ($acid == '349685619') {$tot1 = $tot1 + 1; $tot14 =$kdate.'<font color="808080"><strike>Hovercopter Hingebot</strike></font><br>';}
+		if ($acid == '2380175049') {$tot1 = $tot1 + 1; $tot15 =$kdate.'<font color="808080"><strike>The Malfunctioning Slaver</strike></font><br>';}
+		if ($acid == '4208567903') {$tot1 = $tot1 + 1; $tot16 =$kdate.'<font color="808080"><strike>Electroshock Grinder VIII</strike></font><br>';}
+		if ($acid == '1690121212') {$tot1 = $tot1 + 1; $tot17 =$kdate.'<font color="808080"><strike>Sentinel XXI</strike></font><br>';}
+		if ($acid == '330957674') {$tot1 = $tot1 + 1; $tot18 =$kdate.'<font color="808080"><strike>Short-Circuited Construct Bot</strike></font><br>';}
+		if ($acid == '2327007952') {$tot1 = $tot1 + 1; $tot19 =$kdate.'<font color="808080"><strike>Bhoughbh Model XVII</strike></font><br>';}
+		//Terrors of Thalumbra - Maldura: Forge of Ashes
+		if ($acid == '2769211148') {$tot2 = $tot2 + 1; $tot21 =$kdate.'<font color="808080"><strike>Kyrus of the Old Ways</strike></font><br>';}
+		if ($acid == '1007132342' or $acid == '2172784979') {$tot2 = $tot2 + 1; $tot22 =$kdate.'<font color="808080"><strike>The Forge Golem</strike></font><br>';}
+		if ($acid == '3523870618') {$tot2 = $tot2 + 1; $tot23 =$kdate.'<font color="808080"><strike>Captain Ashenfell</strike></font><br>';}
+		if ($acid == '1258335776') {$tot2 = $tot2 + 1; $tot24 =$kdate.'<font color="808080"><strike>Captain Graybeard</strike></font><br>';}
+		if ($acid == '2897773351') {$tot2 = $tot2 + 1; $tot25 =$kdate.'<font color="808080"><strike>Uigirf, Htardlem, and Omzzem</strike></font><br>';}
+		if ($acid == '996825775')  {$tot2 = $tot2 + 1; $tot26 =$kdate.'<font color="808080"><strike>Bereth Mathias</strike></font><br>';}
+		if ($acid == '1282239033') {$tot2 = $tot2 + 1; $tot27 =$kdate.'<font color="808080"><strike>Kiernun the Lyrical</strike></font><br>';}
+		if ($acid == '3580115843') {$tot2 = $tot2 + 1; $tot28 =$kdate.'<font color="808080"><strike>Cronnin & Dellmun</strike></font><br>';}
+		//Terrors of Thalumbra - Stygian Threshold: Edge of Underfoot
+		if ($acid == '3365912365') {$tot3 = $tot3 + 1; $tot31 =$kdate.'<font color="808080"><strike>Iron Forged Constructs</strike></font><br>';}
+		if ($acid == '3214446523') {$tot3 = $tot3 + 1; $tot32 =$kdate.'<font color="808080"><strike>Jorik the Scourge</strike></font><br>';}
+		if ($acid == '570169880')  {$tot3 = $tot3 + 1; $tot33 =$kdate.'<font color="808080"><strike>Crohp the Mighty</strike></font><br>';}
+		if ($acid == '1459301006') {$tot3 = $tot3 + 1; $tot34 =$kdate.'<font color="808080"><strike>King Lockt</strike></font><br>';}
+		if ($acid == '3488774964') {$tot3 = $tot3 + 1; $tot35 =$kdate.'<font color="808080"><strike>Wedge Tinderton</strike></font><br>';}
+		//Terrors of Thalumbra - Kralet Penumbra: The Hive Mind
+		if ($acid == '2222955101') {$tot4 = $tot4 + 1; $tot41 =$kdate.'<font color="808080"><strike>Kraletus</strike></font><br>';}
+		if ($acid == '348161996')  {$tot4 = $tot4 + 1; $tot42 =$kdate.'<font color="808080"><strike>Ynonngozzz\'Koolbh</strike></font><br>';}
+		if ($acid == '1674032986') {$tot4 = $tot4 + 1; $tot43 =$kdate.'<font color="808080"><strike>The Polliwog</strike></font><br>';}
+		if ($acid == '4207863520') {$tot4 = $tot4 + 1; $tot44 =$kdate.'<font color="808080"><strike>Sath\'Oprusk</strike></font><br>';}
+		if ($acid == '2378815094') {$tot4 = $tot4 + 1; $tot45 =$kdate.'<font color="808080"><strike>The Psionists</strike></font><br>';}
+		if ($acid == '330122197')  {$tot4 = $tot4 + 1; $tot46 =$kdate.'<font color="808080"><strike>Ojuti the Vile</strike></font><br>';}
+		if ($acid == '1688892227') {$tot4 = $tot4 + 1; $tot47 =$kdate.'<font color="808080"><strike>Karith\'Ta</strike></font><br>';}
+		if ($acid == '4255326969') {$tot4 = $tot4 + 1; $tot48 =$kdate.'<font color="808080"><strike>Charrid the Mindwarper</strike></font><br>';}
+		//The Siege
+		if ($acid == '3653116707')  {$siege = $siege + 1; $siege1 =$kdate.'<font color="808080"><strike>The Weapon of War</strike></font><br>';}
+		if ($acid == '1045649697')  {$siege = $siege + 1; $siege2 =$kdate.'<font color="808080"><strike>Sanctifier Goortuk Challenge Mode</strike></font><br>';}
+		if ($acid == '94121355')  {$siege = $siege + 1; $siege3 =$kdate.'<font color="808080"><strike>Sanctifier Goortuk</strike></font><br>';}
+		if ($acid == '3993082443')  {$siege = $siege + 1; $siege4 =$kdate.'<font color="808080"><strike>Durtung the Arm of War</strike></font><br>';}
+		if ($acid == '4032494295')  {$siege = $siege + 1; $siege5 =$kdate.'<font color="808080"><strike>Kreelit, Caller of Hounds</strike></font><br>';}
+		if ($acid == '2425891476')  {$siege = $siege + 1; $siege6 =$kdate.'<font color="808080"><strike>Fergul the Protector</strike></font><br>';}
+		if ($acid == '283336935')  {$fcazic = $fcazic + 1; $fcazic1 =$kdate.'<font color="808080"><strike>Fabled Venekor</strike></font><br>';}
 		}
 		$killslist = array($c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8,$c9,$contested,
 						   $ar1,$ar2,$ar3,$ar4,$ar5,$ar6,$ar7,$ar8,$ar9,$ar10,$arena,
@@ -583,7 +697,14 @@ class eq2progress_portal extends portal_generic {
 						   $malice51,$malice52,$malice53,$malice54,$malice55,$malice5,
 						   $malice61,$malice62,$malice63,$malice6,
 						   $fsd1,$fsd2,$fsd3,$fsd4,$fsd5,$fsd6,$fsd7,$fsd8,$fsd9,$fsd10,$fsd,
-						   $eof1,$eof2,$eof3,$eof4,$eof5,$eof6,$eof7,$eof8,$eof
+						   $eof1,$eof2,$eof3,$eof4,$eof5,$eof6,$eof7,$eof8,$eof,
+						   $totc1,$totc,
+						   $tot11,$tot12,$tot13,$tot14,$tot15,$tot16,$tot17,$tot18,$tot19,$tot1,
+						   $tot21,$tot22,$tot23,$tot24,$tot25,$tot26,$tot27,$tot28,$tot2,
+						   $tot31,$tot32,$tot33,$tot34,$tot35,$tot3,
+						   $tot41,$tot42,$tot43,$tot44,$tot45,$tot46,$tot47,$tot48,$tot4,
+						   $siege1,$siege2,$siege3,$siege4,$siege5,$siege6,$siege,
+						   $fcazic1,$fcazic,
 						   );
 		$this->pdc->put('portal.module.eq2progress.'.$this->root_path, $killslist, 3600);
 				}
@@ -644,6 +765,20 @@ class eq2progress_portal extends portal_generic {
 		$zonetotal24 = ($killslist[179]);
 		$eoff = ($killslist[180].$killslist[181].$killslist[182].$killslist[183].$killslist[184].$killslist[185].$killslist[186].$killslist[187]);
 		$zonetotal25 = ($killslist[188]);
+		$terrc = ($killslist[189]);
+		$zonetotal26 = ($killslist[190]);
+		$terr1 = ($killslist[191].$killslist[192].$killslist[193].$killslist[194].$killslist[195].$killslist[196].$killslist[197].$killslist[198].$killslist[199]);
+		$zonetotal27 = ($killslist[200]);
+		$terr2 = ($killslist[201].$killslist[202].$killslist[203].$killslist[204].$killslist[205].$killslist[206].$killslist[207].$killslist[208]);
+		$zonetotal28 = ($killslist[209]);
+		$terr3 = ($killslist[210].$killslist[211].$killslist[212].$killslist[213].$killslist[214]);
+		$zonetotal29 = ($killslist[215]);
+		$terr4 = ($killslist[216].$killslist[217].$killslist[218].$killslist[219].$killslist[220].$killslist[221].$killslist[222].$killslist[223]);
+		$zonetotal30 = ($killslist[224]);
+		$tsiege = ($killslist[225].$killslist[226].$killslist[227].$killslist[228].$killslist[229].$killslist[230]);
+		$zonetotal31 = ($killslist[231]);
+		$tfcazic = ($killslist[232]);
+		$zonetotal32 = ($killslist[233]);
 		$zonename1 = $cval; 	      $zonemax1 = $contmax;        $zonetip1 = $contes;
 		$zonename2 = $arval; 	      $zonemax2 = $arenamax;       $zonetip2 = $gods;
 		$zonename3 = $hval;  	      $zonemax3 = $harrowmax;      $zonetip3 = $har;
@@ -669,19 +804,26 @@ class eq2progress_portal extends portal_generic {
 		$zonename23 = $malice6val;    $zonemax23 = $malice6max;    $zonetip23 = $mal6;
 		$zonename24 = $fsdval;        $zonemax24 = $fsdmax;        $zonetip24 = $fsdbb;
 		$zonename25 = $eofval;        $zonemax25 = $eofmax;        $zonetip25 = $eoff;
-		$out = '';
-			for($i=1;$i<=25;$i++) {
+		$zonename26 = $totcval;       $zonemax26 = $totcmax;       $zonetip26 = $terrc;
+		$zonename27 = $tot1val;       $zonemax27 = $tot1max;       $zonetip27 = $terr1;
+		$zonename28 = $tot2val;       $zonemax28 = $tot2max;       $zonetip28 = $terr2;
+		$zonename29 = $tot3val;       $zonemax29 = $tot3max;       $zonetip29 = $terr3;
+		$zonename30 = $tot4val;       $zonemax30 = $tot4max;       $zonetip30 = $terr4;
+		$zonename31 = $siegeval;      $zonemax31 = $siegemax;      $zonetip31 = $tsiege;
+		$zonename32 = $fcazicval;     $zonemax32 = $fcazicmax;     $zonetip32 = $tfcazic;
+		$out = ''; 
+			for($i=1;$i<=32;$i++) {
 			$check = ${"zone".$i};
 			if ($check == TRUE) {
 			$text = ${"zonename".$i}; $value = ${"zonetotal".$i}; $max = ${"zonemax".$i}; $tooltip = ${"zonetip".$i};	
-			$out .= $this->bar_out($i,$value,$max,$text,$tooltip);
-			} 
+			$out .= $this->bar_out($i,$value,$max,$text,$tooltip);} 
 			}
-			return $out;
-		return $this->bar_out();
+		return $out;
+		return $this->bar_out();	
 	}
 		
 	public function bar_out($num,$value,$max,$text,$tooltip) {
+		if ($value == $max){$text = '<strike>'.$text.'</strike>';}
 		if(empty($tooltip)) return $this->jquery->ProgressBar('eq2progress_'.unique_id(), 0, array(
 			'total' 	=> $max,
 			'completed' => $value,
@@ -706,5 +848,4 @@ class eq2progress_portal extends portal_generic {
 		return new htooltip('eq2progress_tt'.$num, $tooltipopts);
 	}
 }
-
 ?>
