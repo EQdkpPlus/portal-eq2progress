@@ -17,6 +17,7 @@
  * Modified Version of Hoofy's mybars progression module
  * This version populates the guild raid achievements from the Data Api
  *
+ * V3.9 Added Fabled Fallen Dynasty
  * V3.8 Added The Siege / Removed TLE version
  * V3.7 Added Terrors of Thalumbra
  * V3.6 Combined TLE version
@@ -48,7 +49,7 @@ class eq2progress_portal extends portal_generic {
 	protected static $path		= 'eq2progress';
 	protected static $data		= array(
 		'name'			=> 'EQ2 Progression',
-		'version'		=> '3.8',
+		'version'		=> '3.9',
 		'author'		=> 'Darkmaeg',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Everquest 2 Progression',
@@ -229,6 +230,11 @@ class eq2progress_portal extends portal_generic {
 				'language'	=> 'eq2progress_fcazic',
 				'type'	=> 'radio',
 			),
+			'eq2progress_ffd'	=> array(
+				'name'		=> 'eq2progress_ffd',
+				'language'	=> 'eq2progress_ffd',
+				'type'	=> 'radio',
+			),
 			'eq2progress_date'	=> array(
 				'name'		=> 'eq2progress_date',
 				'language'	=> 'eq2progress_date',
@@ -273,12 +279,13 @@ class eq2progress_portal extends portal_generic {
 		if (($this->config('eq2progress_tot4')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone30 = TRUE); }
 		if (($this->config('eq2progress_siege')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone31 = TRUE); }
 		if (($this->config('eq2progress_fcazic')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone32 = TRUE); }
+		if (($this->config('eq2progress_ffd')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone33 = TRUE); }
 		$arena = 0; $contested = 0; $harrows = 0; $sleeper = 0; $altar = 0; $pow = 0; $dread = 0; $sirens = 0; $djinn= 0;
 		$tov = 0; $as = 0; $tovc = 0; $king = 0; $dreadscale = 0; $deathtoll = 0; $agesend = 0; $malice1 = 0; $malice2 = 0; 
-		$malice3 = 0; $malice4 = 0; $malice5 = 0; $malice6 = 0; $aoma = 0; $fsd = 0; $eof = 0; $totc = 0; $tot1 = 0;
+		$malice3 = 0; $malice4 = 0; $malice5 = 0; $malice6 = 0; $aoma = 0; $fsd = 0; $eof = 0; $totc = 0; $tot1 = 0; $ffd = 0;
 		$tot2 = 0; $tot3 = 0; $tot4 = 0; $siege = 0; $fcazic = 0;
 		$arenamax = 10; $contmax = 9; $harrowmax = 12; $sleepermax = 12; $altarmax = 6; $powmax = 7; $dreadmax = 3; $sirenmax = 9; $djinnmax = 2; $eofmax = 8; $tovmax = 15; $asmax = 11; $tovcmax = 2; $kingmax = 3; $dreadscalemax = 8; $deathtollmax = 5; $agesendmax = 4; $malice1max = 4; $malice2max = 3; $malice3max = 3; $malice4max = 5; $malice5max = 5; $malice6max = 3; 
-		$aomamax = 5; $fsdmax = 10; $totcmax = 1; $tot1max = 9; $tot2max = 8; $tot3max = 5; $tot4max = 8; $siegemax = 6; $fcazicmax = 1;
+		$aomamax = 5; $fsdmax = 10; $totcmax = 1; $tot1max = 9; $tot2max = 8; $tot3max = 5; $tot4max = 8; $siegemax = 6; $fcazicmax = 1; $ffdmax = 3;
 		$this->game->new_object('eq2_daybreak', 'daybreak', array());
 		if(!is_object($this->game->obj['daybreak'])) return "";
 		$progdata = $this->game->obj['daybreak']->guildinfo($this->config->get('guildtag'), $this->config->get('uc_servername'), false);
@@ -428,6 +435,10 @@ class eq2progress_portal extends portal_generic {
 		$siege3=$spacer.'<font color="white">Sanctifier Goortuk</font><br>'; $siege4=$spacer.'<font color="white">Durtung the Arm of War</font><br>'; 
 		$siege5=$spacer.'<font color="white">Kreelit, Caller of Hounds</font><br>'; $siege6=$spacer.'<font color="white">Fergul the Protector</font><br>';
 		$fcazicval=$this->user->lang('eq2progress_f_eq2progress_fcazic'); $fcazic1=$spacer.'<font color="white">Fabled Venekor</font><br>';
+		$ffdval=$this->user->lang('eq2progress_f_eq2progress_ffd'); 
+		$ffd1=$spacer.'<font color="white">Fabled Chel\'Drak</font><br>';
+		$ffd2=$spacer.'<font color="white">Fabled Xux\'laio</font><br>';
+		$ffd3=$spacer.'<font color="white">Fabled Bonesnapper</font><br>';
 		//Check which have been killed
 		$killslist = $this->pdc->get('portal.module.eq2progress.'.$this->root_path);
 				if (!$killslist){
@@ -642,7 +653,7 @@ class eq2progress_portal extends portal_generic {
 		if ($acid == '2327007952') {$tot1 = $tot1 + 1; $tot19 =$kdate.'<font color="808080"><strike>Bhoughbh Model XVII</strike></font><br>';}
 		//Terrors of Thalumbra - Maldura: Forge of Ashes
 		if ($acid == '2769211148') {$tot2 = $tot2 + 1; $tot21 =$kdate.'<font color="808080"><strike>Kyrus of the Old Ways</strike></font><br>';}
-		if ($acid == '1007132342' or $acid == '2172784979') {$tot2 = $tot2 + 1; $tot22 =$kdate.'<font color="808080"><strike>The Forge Golem</strike></font><br>';}
+		if ($acid == '2172784979') {$tot2 = $tot2 + 1; $tot22 =$kdate.'<font color="808080"><strike>The Forge Golem</strike></font><br>';}
 		if ($acid == '3523870618') {$tot2 = $tot2 + 1; $tot23 =$kdate.'<font color="808080"><strike>Captain Ashenfell</strike></font><br>';}
 		if ($acid == '1258335776') {$tot2 = $tot2 + 1; $tot24 =$kdate.'<font color="808080"><strike>Captain Graybeard</strike></font><br>';}
 		if ($acid == '2897773351') {$tot2 = $tot2 + 1; $tot25 =$kdate.'<font color="808080"><strike>Uigirf, Htardlem, and Omzzem</strike></font><br>';}
@@ -672,6 +683,10 @@ class eq2progress_portal extends portal_generic {
 		if ($acid == '4032494295')  {$siege = $siege + 1; $siege5 =$kdate.'<font color="808080"><strike>Kreelit, Caller of Hounds</strike></font><br>';}
 		if ($acid == '2425891476')  {$siege = $siege + 1; $siege6 =$kdate.'<font color="808080"><strike>Fergul the Protector</strike></font><br>';}
 		if ($acid == '283336935')  {$fcazic = $fcazic + 1; $fcazic1 =$kdate.'<font color="808080"><strike>Fabled Venekor</strike></font><br>';}
+		//Fabled Fallen Dynasty
+		if ($acid == '2773962347')  {$ffd = $ffd + 1; $ffd1 =$kdate.'<font color="808080"><strike>Fabled Chel\'Drak</strike></font><br>';}
+		if ($acid == '238639788')  {$ffd = $ffd + 1; $ffd2 =$kdate.'<font color="808080"><strike>Fabled Xux\'laio</strike></font><br>';}
+		if ($acid == '1119419037')  {$ffd = $ffd + 1; $ffd3 =$kdate.'<font color="808080"><strike>Fabled Bonesnapper</strike></font><br>';}
 		}
 		$killslist = array($c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8,$c9,$contested,
 						   $ar1,$ar2,$ar3,$ar4,$ar5,$ar6,$ar7,$ar8,$ar9,$ar10,$arena,
@@ -705,6 +720,7 @@ class eq2progress_portal extends portal_generic {
 						   $tot41,$tot42,$tot43,$tot44,$tot45,$tot46,$tot47,$tot48,$tot4,
 						   $siege1,$siege2,$siege3,$siege4,$siege5,$siege6,$siege,
 						   $fcazic1,$fcazic,
+						   $ffd1,$ffd2,$ffd3,$ffd
 						   );
 		$this->pdc->put('portal.module.eq2progress.'.$this->root_path, $killslist, 3600);
 				}
@@ -733,7 +749,7 @@ class eq2progress_portal extends portal_generic {
 		$zonetotal9 = ($killslist[78]);
 		$tears = ($killslist[79].$killslist[80].$killslist[81].$killslist[82].$killslist[83].$killslist[84].$killslist[85].$killslist[86]
 		          .$killslist[87].$killslist[88].$killslist[89].$killslist[90].$killslist[91].$killslist[92].$killslist[93]);
-	    $zonetotal10 = ($killslist[94]);
+	        $zonetotal10 = ($killslist[94]);
 		$ascent = ($killslist[95].$killslist[96].$killslist[97].$killslist[98].$killslist[99].$killslist[100]
 		           .$killslist[101].$killslist[102].$killslist[103].$killslist[104].$killslist[105]);
 		$zonetotal11 = ($killslist[106]);
@@ -779,6 +795,8 @@ class eq2progress_portal extends portal_generic {
 		$zonetotal31 = ($killslist[231]);
 		$tfcazic = ($killslist[232]);
 		$zonetotal32 = ($killslist[233]);
+		$tffd = ($killslist[234].$killslist[235].$killslist[236]);
+		$zonetotal33 = ($killslist[237]);
 		$zonename1 = $cval; 	      $zonemax1 = $contmax;        $zonetip1 = $contes;
 		$zonename2 = $arval; 	      $zonemax2 = $arenamax;       $zonetip2 = $gods;
 		$zonename3 = $hval;  	      $zonemax3 = $harrowmax;      $zonetip3 = $har;
@@ -811,8 +829,9 @@ class eq2progress_portal extends portal_generic {
 		$zonename30 = $tot4val;       $zonemax30 = $tot4max;       $zonetip30 = $terr4;
 		$zonename31 = $siegeval;      $zonemax31 = $siegemax;      $zonetip31 = $tsiege;
 		$zonename32 = $fcazicval;     $zonemax32 = $fcazicmax;     $zonetip32 = $tfcazic;
+		$zonename33 = $ffdval;        $zonemax33 = $ffdmax;        $zonetip33 = $tffd;
 		$out = ''; 
-			for($i=1;$i<=32;$i++) {
+			for($i=1;$i<=33;$i++) {
 			$check = ${"zone".$i};
 			if ($check == TRUE) {
 			$text = ${"zonename".$i}; $value = ${"zonetotal".$i}; $max = ${"zonemax".$i}; $tooltip = ${"zonetip".$i};	
