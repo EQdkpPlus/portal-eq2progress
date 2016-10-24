@@ -17,6 +17,7 @@
  * Modified Version of Hoofy's mybars progression module
  * This version populates the guild raid achievements from the Data Api
  *
+ * V4.0 Added Kunark Ascending
  * V3.9 Added Fabled Fallen Dynasty
  * V3.8 Added The Siege / Removed TLE version
  * V3.7 Added Terrors of Thalumbra
@@ -49,7 +50,7 @@ class eq2progress_portal extends portal_generic {
 	protected static $path		= 'eq2progress';
 	protected static $data		= array(
 		'name'			=> 'EQ2 Progression',
-		'version'		=> '3.9',
+		'version'		=> '4.0',
 		'author'		=> 'Darkmaeg',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Everquest 2 Progression',
@@ -235,6 +236,41 @@ class eq2progress_portal extends portal_generic {
 				'language'	=> 'eq2progress_ffd',
 				'type'	=> 'radio',
 			),
+			'eq2progress_ka1'	=> array(
+				'name'		=> 'eq2progress_ka1',
+				'language'	=> 'eq2progress_ka1',
+				'type'	=> 'radio',
+			),
+			'eq2progress_ka2'	=> array(
+				'name'		=> 'eq2progress_ka2',
+				'language'	=> 'eq2progress_ka2',
+				'type'	=> 'radio',
+			),
+			'eq2progress_ka3'	=> array(
+				'name'		=> 'eq2progress_ka3',
+				'language'	=> 'eq2progress_ka3',
+				'type'	=> 'radio',
+			),
+			'eq2progress_ka4'	=> array(
+				'name'		=> 'eq2progress_ka4',
+				'language'	=> 'eq2progress_ka4',
+				'type'	=> 'radio',
+			),
+			'eq2progress_ka5'	=> array(
+				'name'		=> 'eq2progress_ka5',
+				'language'	=> 'eq2progress_ka5',
+				'type'	=> 'radio',
+			),
+			'eq2progress_ka6'	=> array(
+				'name'		=> 'eq2progress_ka6',
+				'language'	=> 'eq2progress_ka6',
+				'type'	=> 'radio',
+			),
+			'eq2progress_ka7'	=> array(
+				'name'		=> 'eq2progress_ka7',
+				'language'	=> 'eq2progress_ka7',
+				'type'	=> 'radio',
+			),
 			'eq2progress_date'	=> array(
 				'name'		=> 'eq2progress_date',
 				'language'	=> 'eq2progress_date',
@@ -279,13 +315,19 @@ class eq2progress_portal extends portal_generic {
 		if (($this->config('eq2progress_tot4')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone30 = TRUE); }
 		if (($this->config('eq2progress_siege')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone31 = TRUE); }
 		if (($this->config('eq2progress_fcazic')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone32 = TRUE); }
-		if (($this->config('eq2progress_ffd')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone33 = TRUE); }
+		if (($this->config('eq2progress_ffd')) == TRUE )   			{ ($maxbars = $maxbars + 1); ($zone33 = TRUE); }
+		if (($this->config('eq2progress_ka1')) == TRUE )   			{ ($maxbars = $maxbars + 1); ($zone34 = TRUE); }
+		if (($this->config('eq2progress_ka2')) == TRUE )   			{ ($maxbars = $maxbars + 1); ($zone35 = TRUE); }
+		if (($this->config('eq2progress_ka3')) == TRUE )   			{ ($maxbars = $maxbars + 1); ($zone36 = TRUE); }
+		if (($this->config('eq2progress_ka4')) == TRUE )   			{ ($maxbars = $maxbars + 1); ($zone37 = TRUE); }
+		if (($this->config('eq2progress_ka5')) == TRUE )   			{ ($maxbars = $maxbars + 1); ($zone38 = TRUE); }
+		if (($this->config('eq2progress_ka6')) == TRUE )   			{ ($maxbars = $maxbars + 1); ($zone39 = TRUE); }
+		if (($this->config('eq2progress_ka7')) == TRUE )   			{ ($maxbars = $maxbars + 1); ($zone40 = TRUE); }
 		$arena = 0; $contested = 0; $harrows = 0; $sleeper = 0; $altar = 0; $pow = 0; $dread = 0; $sirens = 0; $djinn= 0;
 		$tov = 0; $as = 0; $tovc = 0; $king = 0; $dreadscale = 0; $deathtoll = 0; $agesend = 0; $malice1 = 0; $malice2 = 0; 
-		$malice3 = 0; $malice4 = 0; $malice5 = 0; $malice6 = 0; $aoma = 0; $fsd = 0; $eof = 0; $totc = 0; $tot1 = 0; $ffd = 0;
-		$tot2 = 0; $tot3 = 0; $tot4 = 0; $siege = 0; $fcazic = 0;
+		$malice3 = 0; $malice4 = 0; $malice5 = 0; $malice6 = 0; $aoma = 0; $fsd = 0; $eof = 0; $ffd = 0; $totc = 0; $tot1 = 0; $tot2 = 0; $tot3 = 0; $tot4 = 0; $siege = 0; $fcazic = 0; $ka1 = 0; $ka2 = 0; $ka3 = 0; $ka4 = 0; $ka5 = 0; $ka6 = 0; $ka7 = 0;
 		$arenamax = 10; $contmax = 9; $harrowmax = 12; $sleepermax = 12; $altarmax = 6; $powmax = 7; $dreadmax = 3; $sirenmax = 9; $djinnmax = 2; $eofmax = 8; $tovmax = 15; $asmax = 11; $tovcmax = 2; $kingmax = 3; $dreadscalemax = 8; $deathtollmax = 5; $agesendmax = 4; $malice1max = 4; $malice2max = 3; $malice3max = 3; $malice4max = 5; $malice5max = 5; $malice6max = 3; 
-		$aomamax = 5; $fsdmax = 10; $totcmax = 1; $tot1max = 9; $tot2max = 8; $tot3max = 5; $tot4max = 8; $siegemax = 6; $fcazicmax = 1; $ffdmax = 3;
+		$aomamax = 5; $fsdmax = 10; $totcmax = 1; $tot1max = 9; $tot2max = 8; $tot3max = 5; $tot4max = 8; $siegemax = 6; $fcazicmax = 1; $ffdmax = 3; $ka1max = 6; $ka2max = 5; $ka3max = 5; $ka4max = 5; $ka5max = 5; $ka6max = 4; $ka7max = 1;
 		$this->game->new_object('eq2_daybreak', 'daybreak', array());
 		if(!is_object($this->game->obj['daybreak'])) return "";
 		$progdata = $this->game->obj['daybreak']->guildinfo($this->config->get('guildtag'), $this->config->get('uc_servername'), false);
@@ -434,11 +476,50 @@ class eq2progress_portal extends portal_generic {
 		$siege1=$spacer.'<font color="white">The Weapon of War</font><br>'; $siege2=$spacer.'<font color="white">Sanctifier Goortuk Challenge Mode</font><br>'; 
 		$siege3=$spacer.'<font color="white">Sanctifier Goortuk</font><br>'; $siege4=$spacer.'<font color="white">Durtung the Arm of War</font><br>'; 
 		$siege5=$spacer.'<font color="white">Kreelit, Caller of Hounds</font><br>'; $siege6=$spacer.'<font color="white">Fergul the Protector</font><br>';
-		$fcazicval=$this->user->lang('eq2progress_f_eq2progress_fcazic'); $fcazic1=$spacer.'<font color="white">Fabled Venekor</font><br>';
+		$fcazicval=$this->user->lang('eq2progress_f_eq2progress_fcazic'); 
+		$fcazic1=$spacer.'<font color="white">Fabled Venekor</font><br>';
 		$ffdval=$this->user->lang('eq2progress_f_eq2progress_ffd'); 
 		$ffd1=$spacer.'<font color="white">Fabled Chel\'Drak</font><br>';
 		$ffd2=$spacer.'<font color="white">Fabled Xux\'laio</font><br>';
 		$ffd3=$spacer.'<font color="white">Fabled Bonesnapper</font><br>';
+		$ka1val=$this->user->lang('eq2progress_f_eq2progress_ka1');
+		$ka11=$spacer.'<font color="white">Shanaira the Prestigious</font><br>';
+		$ka12=$spacer.'<font color="white">Amalgams of Order and Chaos</font><br>';
+		$ka13=$spacer.'<font color="white">Shanaira the Powermonger</font><br>';
+		$ka14=$spacer.'<font color="white">Botanist Heridal</font><br>';
+		$ka15=$spacer.'<font color="white">Guardian of Arcanna\'se</font><br>';
+		$ka16=$spacer.'<font color="white">Memory of the Stolen</font><br>';		
+		$ka2val=$this->user->lang('eq2progress_f_eq2progress_ka2');
+		$ka21=$spacer.'<font color="white">Xalgoz</font><br>';
+		$ka22=$spacer.'<font color="white">Sentinel Primatious</font><br>';
+		$ka23=$spacer.'<font color="white">Strathbone Runelord</font><br>';
+		$ka24=$spacer.'<font color="white">Chomp</font><br>';
+		$ka25=$spacer.'<font color="white">Valigez, the Entomber</font><br>';
+		$ka3val=$this->user->lang('eq2progress_f_eq2progress_ka3');
+		$ka31=$spacer.'<font color="white">The Kly</font><br>';
+		$ka32=$spacer.'<font color="white">Gorius the Gray</font><br>';
+		$ka33=$spacer.'<font color="white">Brutius the Skulk</font><br>';
+		$ka34=$spacer.'<font color="white">Danariun, the Crypt Keeper</font><br>';
+		$ka35=$spacer.'<font color="white">Lumpy Goo</font><br>';
+		$ka4val=$this->user->lang('eq2progress_f_eq2progress_ka4');
+		$ka41=$spacer.'<font color="white">Lord Rak\'Ashiir</font><br>';
+		$ka42=$spacer.'<font color="white">Lord Ghiosk</font><br>';
+		$ka43=$spacer.'<font color="white">The Black Reaver</font><br>';
+		$ka44=$spacer.'<font color="white">The Captain of the Guard</font><br>';
+		$ka45=$spacer.'<font color="white">Gyrating Green Slime</font><br>';
+		$ka5val=$this->user->lang('eq2progress_f_eq2progress_ka5');
+		$ka51=$spacer.'<font color="white">Setri Lureth</font><br>';
+		$ka52=$spacer.'<font color="white">Raenha, Sister of Remorse</font><br>';
+		$ka53=$spacer.'<font color="white">Vhaksiz the Shade</font><br>';
+		$ka54=$spacer.'<font color="white">Anaheed the Dreamkeeper</font><br>';
+		$ka55=$spacer.'<font color="white">Hobgoblin Anguish Lord</font><br>';
+		$ka6val=$this->user->lang('eq2progress_f_eq2progress_ka6');
+		$ka62=$spacer.'<font color="white">Territus, the Deathbringer</font><br>';
+		$ka63=$spacer.'<font color="white">Baliath, Harbinger of Nightmares</font><br>';
+		$ka64=$spacer.'<font color="white">The Summoned foes</font><br>';
+		$ka61=$spacer.'<font color="white">Warden of Nightmares</font><br>';
+		$ka7val=$this->user->lang('eq2progress_f_eq2progress_ka7');
+		$ka71=$spacer.'<font color="white">The Rejuvenating One</font><br>';
 		//Check which have been killed
 		$killslist = $this->pdc->get('portal.module.eq2progress.'.$this->root_path);
 				if (!$killslist){
@@ -446,7 +527,7 @@ class eq2progress_portal extends portal_generic {
 		$kdate = "";
 		if (($this->config('eq2progress_date')) == TRUE ) 		
 		{ ($stamp = date('m/d/Y', $achieve[$a]['completedtimestamp'])); 
-        ($kdate = '<font color="white">'.$stamp.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>'); }
+                ($kdate = '<font color="white">'.$stamp.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>'); }
 		$acid = $achieve[$a]['id'];
 		//Dreadcutter
 		if ($acid == '3473349988') {$dread = $dread + 1; $d1 =$kdate.'<font color="808080"><strike>Omugra, Thazurus, & Vuzalg</strike></font><br>';} 
@@ -685,8 +766,77 @@ class eq2progress_portal extends portal_generic {
 		if ($acid == '283336935')  {$fcazic = $fcazic + 1; $fcazic1 =$kdate.'<font color="808080"><strike>Fabled Venekor</strike></font><br>';}
 		//Fabled Fallen Dynasty
 		if ($acid == '2773962347')  {$ffd = $ffd + 1; $ffd1 =$kdate.'<font color="808080"><strike>Fabled Chel\'Drak</strike></font><br>';}
-		if ($acid == '238639788')  {$ffd = $ffd + 1; $ffd2 =$kdate.'<font color="808080"><strike>Fabled Xux\'laio</strike></font><br>';}
+		if ($acid == '238639788')   {$ffd = $ffd + 1; $ffd2 =$kdate.'<font color="808080"><strike>Fabled Xux\'laio</strike></font><br>';}
 		if ($acid == '1119419037')  {$ffd = $ffd + 1; $ffd3 =$kdate.'<font color="808080"><strike>Fabled Bonesnapper</strike></font><br>';}
+		//Kunark Ascending - Arcanna'se Spire: Order and Chaos
+		if ($acid == '1079927266')           {$ka11f = ' FLAWLESS';}
+		if ($acid == '4134444588')  {$ka12f = ' FLAWLESS';}
+		if ($acid == '4043528757')  {$ka13f = ' FLAWLESS';}
+		if ($acid == '1745488783')  {$ka14f = ' FLAWLESS';}
+		if ($acid == '520960793')   {$ka15f = ' FLAWLESS';}
+		if ($acid == '2171186874')  {$ka16f = ' FLAWLESS';}
+		if ($acid == '1594406007')  {$ka1 = $ka1 + 1; $ka11 =$kdate.'<font color="808080"><strike>Shanaira the Prestigious</strike></font>'.$ka11f.'<br>';}
+		if ($acid == '1844904577')  {$ka1 = $ka1 + 1; $ka12 =$kdate.'<font color="808080"><strike>Amalgams of Order and Chaos</strike></font>'.$ka12f.'<br>';}
+		if ($acid == '1788528280')  {$ka1 = $ka1 + 1; $ka13 =$kdate.'<font color="808080"><strike>Shanaira the Powermonger</strike></font>'.$ka13f.'<br>';}
+		if ($acid == '4086535970')  {$ka1 = $ka1 + 1; $ka14 =$kdate.'<font color="808080"><strike>Botanist Heridal</strike></font>'.$ka14f.'<br>';}
+		if ($acid == '2224334772')  {$ka1 = $ka1 + 1; $ka15 =$kdate.'<font color="808080"><strike>Guardian of Arcanna\'se</strike></font>'.$ka15f.'<br>';}
+		if ($acid == '451949079')  {$ka1 = $ka1 + 1; $ka16 =$kdate.'<font color="808080"><strike>Memory of the Stolen</strike></font>'.$ka16f.'<br>';}
+		//Kunark Ascending - Ruins of Kaesora: Ancient Xalgozian Temple
+		if ($acid == '1362160951')  {$ka21f = ' FLAWLESS';}
+		if ($acid == '1811878238')  {$ka22f = ' FLAWLESS';}
+		if ($acid == '559552952')  {$ka23f = ' FLAWLESS';}
+		if ($acid == '3092465666')  {$ka24f = ' FLAWLESS';}
+		if ($acid == '3478419604')  {$ka25f = ' FLAWLESS';}
+		if ($acid == '3349279994')  {$ka2 = $ka2 + 1; $ka21 =$kdate.'<font color="808080"><strike>Xalgoz</strike></font>'.$ka21f.'<br>';}
+		if ($acid == '4001373713')  {$ka2 = $ka2 + 1; $ka22 =$kdate.'<font color="808080"><strike>Sentinel Primatious</strike></font>'.$ka22f.'<br>';}
+		if ($acid == '3083534453')  {$ka2 = $ka2 + 1; $ka23 =$kdate.'<font color="808080"><strike>Strathbone Runelord</strike></font>'.$ka23f.'<br>';}
+		if ($acid == '784486863')  {$ka2 = $ka2 + 1; $ka24 =$kdate.'<font color="808080"><strike>Chomp</strike></font>'.$ka24f.'<br>';}
+		if ($acid == '1506107737')  {$ka2 = $ka2 + 1; $ka25 =$kdate.'<font color="808080"><strike>Valigez, the Entomber</strike></font>'.$ka25f.'<br>';}
+		//Kunark Ascending - Crypt of Dalnir: The Kly Stronghold
+		if ($acid == '2928257546')  {$ka31f = ' FLAWLESS';}
+		if ($acid == '3650001564')  {$ka32f = ' FLAWLESS';}
+		if ($acid == '2850319891')  {$ka33f = ' FLAWLESS';}
+		if ($acid == '820854697')  {$ka34f = ' FLAWLESS';}
+		if ($acid == '1206521663')  {$ka35f = ' FLAWLESS';}
+		if ($acid == '909699392')  {$ka3 = $ka3 + 1; $ka31 =$kdate.'<font color="808080"><strike>The Kly</strike></font>'.$ka31f.'<br>';}
+		if ($acid == '1094703574')  {$ka3 = $ka3 + 1; $ka32 =$kdate.'<font color="808080"><strike>Gorius the Gray</strike></font>'.$ka32f.'<br>';}
+		if ($acid == '827665753')  {$ka3 = $ka3 + 1; $ka33 =$kdate.'<font color="808080"><strike>Brutius the Skulk</strike></font>'.$ka33f.'<br>';}
+		if ($acid == '2824633571')  {$ka3 = $ka3 + 1; $ka34 =$kdate.'<font color="808080"><strike>Danariun, the Crypt Keeper</strike></font>'.$ka34f.'<br>';}
+		if ($acid == '3747302517')  {$ka3 = $ka3 + 1; $ka35 =$kdate.'<font color="808080"><strike>Lumpy Goo</strike></font>'.$ka35f.'<br>';}
+		//Kunark Ascending - Lost City of Torsis: Ashiirian Court
+		if ($acid == '866554065')  {$ka41f = ' FLAWLESS';}
+		if ($acid == '1151443015')  {$ka42f = ' FLAWLESS';}
+		if ($acid == '885740744')  {$ka43f = ' FLAWLESS';}
+		if ($acid == '2915173746')  {$ka44f = ' FLAWLESS';}
+		if ($acid == '3670357476')  {$ka45f = ' FLAWLESS';}
+		if ($acid == '434391945')  {$ka4 = $ka4 + 1; $ka41 =$kdate.'<font color="808080"><strike>Lord Rak\'Ashiir</strike></font>'.$ka41f.'<br>';}
+		if ($acid == '1860401951')  {$ka4 = $ka4 + 1; $ka42 =$kdate.'<font color="808080"><strike>Lord Ghiosk</strike></font>'.$ka42f.'<br>';}
+		if ($acid == '512331664')  {$ka4 = $ka4 + 1; $ka43 =$kdate.'<font color="808080"><strike>The Black Reaver</strike></font>'.$ka43f.'<br>';}
+		if ($acid == '2273369642')  {$ka4 = $ka4 + 1; $ka44 =$kdate.'<font color="808080"><strike>The Captain of the Guard</strike></font>'.$ka44f.'<br>';}
+		if ($acid == '4035440316')  {$ka4 = $ka4 + 1; $ka45 =$kdate.'<font color="808080"><strike>Gyrating Green Slime</strike></font>'.$ka45f.'<br>';}
+		//Kunark Ascending - Vaedenmoor, Realm of Despair
+		if ($acid == '1027542750')  {$ka51f = ' FLAWLESS';}
+		if ($acid == '3562843115')  {$ka52f = ' FLAWLESS';}
+		if ($acid == '1245199944')  {$ka53f = ' FLAWLESS';}
+		if ($acid == '978504391')  {$ka54f = ' FLAWLESS';}
+		if ($acid == '2740689789')  {$ka55f = ' FLAWLESS';}
+		if ($acid == '394122630')  {$ka5 = $ka5 + 1; $ka51 =$kdate.'<font color="808080"><strike>Setri Lureth</strike></font>'.$ka51f.'<br>';}
+		if ($acid == '4263407795')  {$ka5 = $ka5 + 1; $ka52 =$kdate.'<font color="808080"><strike>Raenha, Sister of Remorse</strike></font>'.$ka52f.'<br>';}
+		if ($acid == '1618666768')  {$ka5 = $ka5 + 1; $ka53 =$kdate.'<font color="808080"><strike>Vhaksiz the Shade</strike></font>'.$ka53f.'<br>';}
+		if ($acid == '269488543')  {$ka5 = $ka5 + 1; $ka54 =$kdate.'<font color="808080"><strike>Anaheed the Dreamkeeper</strike></font>'.$ka54f.'<br>';}
+		if ($acid == '2300133413')  {$ka5 = $ka5 + 1; $ka55 =$kdate.'<font color="808080"><strike>Hobgoblin Anguish Lord</strike></font>'.$ka55f.'<br>';}
+		//Kunark Ascending - Vaedenmoor, Heart of Nightmares
+		if ($acid == '3686693628')  {$ka61f = ' FLAWLESS';}
+		if ($acid == '2897824362')  {$ka62f = ' FLAWLESS';}
+		if ($acid == '853401545')  {$ka63f = ' FLAWLESS';}
+		if ($acid == '1119300422')  {$ka64f = ' FLAWLESS';}
+		if ($acid == '3190088161')  {$ka6 = $ka6 + 1; $ka61 =$kdate.'<font color="808080"><strike>Territus, the Deathbringer</strike></font>'.$ka61f.'<br>';}
+		if ($acid == '3374567799')  {$ka6 = $ka6 + 1; $ka62 =$kdate.'<font color="808080"><strike>Baliath, Harbinger of Nightmares</strike></font>'.$ka62f.'<br>';}
+		if ($acid == '1464288468')  {$ka6 = $ka6 + 1; $ka63 =$kdate.'<font color="808080"><strike>The Summoned Foes</strike></font>'.$ka63f.'<br>';}
+		if ($acid == '657305691')  {$ka6 = $ka6 + 1; $ka64 =$kdate.'<font color="808080"><strike>Warden of Nightmares</strike></font>'.$ka64f.'<br>';}
+		//Kunark Ascending - Chamber of Rejuvenation
+		if ($acid == '393840919')  {$ka71f = ' FLAWLESS';}
+		if ($acid == '4063929859')  {$ka7 = $ka7 + 1; $ka71 =$kdate.'<font color="808080"><strike>The Rejuvenating One</strike></font>'.$ka71f.'<br>';}
 		}
 		$killslist = array($c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8,$c9,$contested,
 						   $ar1,$ar2,$ar3,$ar4,$ar5,$ar6,$ar7,$ar8,$ar9,$ar10,$arena,
@@ -720,7 +870,14 @@ class eq2progress_portal extends portal_generic {
 						   $tot41,$tot42,$tot43,$tot44,$tot45,$tot46,$tot47,$tot48,$tot4,
 						   $siege1,$siege2,$siege3,$siege4,$siege5,$siege6,$siege,
 						   $fcazic1,$fcazic,
-						   $ffd1,$ffd2,$ffd3,$ffd
+						   $ffd1,$ffd2,$ffd3,$ffd,
+						   $ka11,$ka12,$ka13,$ka14,$ka15,$ka16,$ka1,
+						   $ka21,$ka22,$ka23,$ka24,$ka25,$ka2,
+						   $ka31,$ka32,$ka33,$ka34,$ka35,$ka3,
+						   $ka41,$ka42,$ka43,$ka44,$ka45,$ka4,
+						   $ka51,$ka52,$ka53,$ka54,$ka55,$ka5,
+						   $ka61,$ka62,$ka63,$ka64,$ka6,
+						   $ka71,$ka7
 						   );
 		$this->pdc->put('portal.module.eq2progress.'.$this->root_path, $killslist, 3600);
 				}
@@ -749,7 +906,7 @@ class eq2progress_portal extends portal_generic {
 		$zonetotal9 = ($killslist[78]);
 		$tears = ($killslist[79].$killslist[80].$killslist[81].$killslist[82].$killslist[83].$killslist[84].$killslist[85].$killslist[86]
 		          .$killslist[87].$killslist[88].$killslist[89].$killslist[90].$killslist[91].$killslist[92].$killslist[93]);
-	        $zonetotal10 = ($killslist[94]);
+                $zonetotal10 = ($killslist[94]);
 		$ascent = ($killslist[95].$killslist[96].$killslist[97].$killslist[98].$killslist[99].$killslist[100]
 		           .$killslist[101].$killslist[102].$killslist[103].$killslist[104].$killslist[105]);
 		$zonetotal11 = ($killslist[106]);
@@ -763,7 +920,7 @@ class eq2progress_portal extends portal_generic {
 		$zonetotal15 = ($killslist[128]);
 		$agesen = ($killslist[129].$killslist[130].$killslist[131].$killslist[132]);
 		$zonetotal16 = ($killslist[133]);
-        $aomavatar = ($killslist[134].$killslist[135].$killslist[136].$killslist[137].$killslist[138]);
+                $aomavatar = ($killslist[134].$killslist[135].$killslist[136].$killslist[137].$killslist[138]);
 		$zonetotal17 = ($killslist[139]);
 		$mal1 = ($killslist[140].$killslist[141].$killslist[142].$killslist[143]);
 		 $zonetotal18 = ($killslist[144]);
@@ -797,6 +954,20 @@ class eq2progress_portal extends portal_generic {
 		$zonetotal32 = ($killslist[233]);
 		$tffd = ($killslist[234].$killslist[235].$killslist[236]);
 		$zonetotal33 = ($killslist[237]);
+		$kuna1 = ($killslist[238].$killslist[239].$killslist[240].$killslist[241].$killslist[242].$killslist[243]);
+		$zonetotal34 = ($killslist[244]);
+		$kuna2 = ($killslist[245].$killslist[246].$killslist[247].$killslist[248].$killslist[249]);
+		$zonetotal35 = ($killslist[250]);
+		$kuna3 = ($killslist[251].$killslist[252].$killslist[253].$killslist[254].$killslist[255]);
+		$zonetotal36 = ($killslist[256]);
+		$kuna4 = ($killslist[257].$killslist[258].$killslist[259].$killslist[260].$killslist[261]);
+		$zonetotal37 = ($killslist[262]);
+		$kuna5 = ($killslist[263].$killslist[264].$killslist[265].$killslist[266].$killslist[267]);
+		$zonetotal38 = ($killslist[268]);
+		$kuna6 = ($killslist[269].$killslist[270].$killslist[271].$killslist[272]);
+		$zonetotal39 = ($killslist[273]);
+		$kuna7 = ($killslist[274]);
+		$zonetotal40 = ($killslist[275]);
 		$zonename1 = $cval; 	      $zonemax1 = $contmax;        $zonetip1 = $contes;
 		$zonename2 = $arval; 	      $zonemax2 = $arenamax;       $zonetip2 = $gods;
 		$zonename3 = $hval;  	      $zonemax3 = $harrowmax;      $zonetip3 = $har;
@@ -830,8 +1001,15 @@ class eq2progress_portal extends portal_generic {
 		$zonename31 = $siegeval;      $zonemax31 = $siegemax;      $zonetip31 = $tsiege;
 		$zonename32 = $fcazicval;     $zonemax32 = $fcazicmax;     $zonetip32 = $tfcazic;
 		$zonename33 = $ffdval;        $zonemax33 = $ffdmax;        $zonetip33 = $tffd;
+		$zonename34 = $ka1val;        $zonemax34 = $ka1max;        $zonetip34 = $kuna1;
+		$zonename35 = $ka2val;        $zonemax35 = $ka2max;        $zonetip35 = $kuna2;
+		$zonename36 = $ka3val;        $zonemax36 = $ka3max;        $zonetip36 = $kuna3;
+		$zonename37 = $ka4val;        $zonemax37 = $ka4max;        $zonetip37 = $kuna4;
+		$zonename38 = $ka5val;        $zonemax38 = $ka5max;        $zonetip38 = $kuna5;
+		$zonename39 = $ka6val;        $zonemax39 = $ka6max;        $zonetip39 = $kuna6;
+		$zonename40 = $ka7val;        $zonemax40 = $ka7max;        $zonetip40 = $kuna7;
 		$out = ''; 
-			for($i=1;$i<=33;$i++) {
+			for($i=1;$i<=40;$i++) {
 			$check = ${"zone".$i};
 			if ($check == TRUE) {
 			$text = ${"zonename".$i}; $value = ${"zonetotal".$i}; $max = ${"zonemax".$i}; $tooltip = ${"zonetip".$i};	
