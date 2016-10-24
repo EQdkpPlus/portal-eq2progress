@@ -13,7 +13,7 @@
  * @package		eqdkp-plus
  * @version		$Rev: 12732 $
  * 
- * $Id: english.php 12732 2013-01-04 22:03:33Z hoofy_leon $
+ * $Id: german.php 12732 2013-01-04 22:03:33Z hoofy_leon $
  */
 
 if (!defined('EQDKP_INC')) {
@@ -21,7 +21,7 @@ if (!defined('EQDKP_INC')) {
 }
 
 $lang = array(
-	'eq2progress_f_eq2progress_headtext'	=> 'Title of the module',
+	'eq2progress_f_eq2progress_headtext'	=> 'Titel des Moduls',
 	'eq2progress_f_eq2progress_shattered'	=> 'Shattered Lands',
 	'eq2progress_f_eq2progress_splitpaw'	=> 'Splitpaw Saga',
 	'eq2progress_f_eq2progress_desert' 		=> 'Desert of Flames',
