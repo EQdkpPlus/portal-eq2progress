@@ -72,6 +72,13 @@ $lang = array(
 	'eq2progress_f_eq2progress_siege'       => 'The Siege',
 	'eq2progress_f_eq2progress_fcazic'      => 'Fabled Cazic Thule',
 	'eq2progress_f_eq2progress_ffd'         => 'Fabled Fallen Dynasty',
-	'eq2progress_f_eq2progress_date'  	=> 'Show Date Killed?<BR>*Note: Data is updated every 24 hours.<BR>Changing date setting will take effect next update.',
+	'eq2progress_f_eq2progress_ka1'         => 'Arcanna\'se Spire',
+	'eq2progress_f_eq2progress_ka2'         => 'Ruins of Kaesora',
+	'eq2progress_f_eq2progress_ka3'         => 'Crypt of Dalnir',
+	'eq2progress_f_eq2progress_ka4'         => 'Lost City of Torsis',
+	'eq2progress_f_eq2progress_ka5'         => 'Realm of Despair',
+	'eq2progress_f_eq2progress_ka6'         => 'Heart of Nightmares',
+	'eq2progress_f_eq2progress_ka7'         => 'Chamber of Rejuvenation',
+	'eq2progress_f_eq2progress_date'	=> 'Show Date Killed?<BR>*Note: Data is updated every 24 hours.<BR>Changing date setting will take effect next update.',
 );
 ?>
