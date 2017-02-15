@@ -17,6 +17,7 @@
  * Modified Version of Hoofy's mybars progression module
  * This version populates the guild raid achievements from the Data Api
  *
+ * V4.2 DBG Changed some Achievement ID's
  * V4.1 Minor Bug Fixes
  * V4.0.1 Bug Fixes
  * V4.0 Added Kunark Ascending
@@ -52,7 +53,7 @@ class eq2progress_portal extends portal_generic {
 	protected static $path		= 'eq2progress';
 	protected static $data		= array(
 		'name'			=> 'EQ2 Progression',
-		'version'		=> '4.1',
+		'version'		=> '4.2',
 		'author'		=> 'Darkmaeg',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Everquest 2 Progression',
@@ -767,7 +768,7 @@ class eq2progress_portal extends portal_generic {
 		if ($acid == '238639788')   {$ffd = $ffd + 1; $ffd2 =$kdate.'<font color="808080"><strike>Fabled Xux\'laio</strike></font><br>';}
 		if ($acid == '1119419037')  {$ffd = $ffd + 1; $ffd3 =$kdate.'<font color="808080"><strike>Fabled Bonesnapper</strike></font><br>';}
 		//Kunark Ascending - Arcanna'se Spire: Order and Chaos
-		if ($acid == '1594406007')  {$ka1 = $ka1 + 1; $ka11 =$kdate.'<font color="808080"><strike>Shanaira the Prestigious</strike></font>'.$ka11f.'<br>';}
+		if ($acid == '444980425')  {$ka1 = $ka1 + 1; $ka11 =$kdate.'<font color="808080"><strike>Shanaira the Prestigious</strike></font>'.$ka11f.'<br>';}
 		if ($acid == '1844904577')  {$ka1 = $ka1 + 1; $ka12 =$kdate.'<font color="808080"><strike>Amalgams of Order and Chaos</strike></font>'.$ka12f.'<br>';}
 		if ($acid == '1788528280')  {$ka1 = $ka1 + 1; $ka13 =$kdate.'<font color="808080"><strike>Shanaira the Powermonger</strike></font>'.$ka13f.'<br>';}
 		if ($acid == '4086535970')  {$ka1 = $ka1 + 1; $ka14 =$kdate.'<font color="808080"><strike>Botanist Heridal</strike></font>'.$ka14f.'<br>';}
@@ -812,7 +813,7 @@ class eq2progress_portal extends portal_generic {
 		if (($this->config('eq2progress_date')) == TRUE ) 		
 		{ ($fstamp = date('m/d/Y', $achieve[$b]['completedtimestamp'])); 
         ($fkdate = '<font color="white">'.$fstamp.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>');	}
-		if ($acid == '1079927266')  {$ka11 =$fkdate.'<font color="808080"><strike>Shanaira the Prestigious</strike></font> FLAWLESS<br>';}
+		if ($acid == '2600463831')  {$ka11 =$fkdate.'<font color="808080"><strike>Shanaira the Prestigious</strike></font> FLAWLESS<br>';}
 		if ($acid == '4134444588')  {$ka12 =$fkdate.'<font color="808080"><strike>Amalgams of Order and Chaos</strike></font> FLAWLESS<br>';}
 		if ($acid == '4043528757')  {$ka13 =$fkdate.'<font color="808080"><strike>Shanaira the Powermonger</strike></font> FLAWLESS<br>';}
 		if ($acid == '1745488783')  {$ka14 =$fkdate.'<font color="808080"><strike>Botanist Heridal</strike></font> FLAWLESS<br>';}
