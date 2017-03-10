@@ -79,6 +79,8 @@ $lang = array(
 	'eq2progress_f_eq2progress_ka5'         => 'Realm of Despair',
 	'eq2progress_f_eq2progress_ka6'         => 'Heart of Nightmares',
 	'eq2progress_f_eq2progress_ka7'         => 'Chamber of Rejuvenation',
+	'eq2progress_f_eq2progress_ka8'         => 'Arcanna\'se Spire (Expert)',
+	'eq2progress_f_eq2progress_ka9'         => 'Crypt of Dalnir (Expert)',
 	'eq2progress_f_eq2progress_date'	=> 'Show Date Killed?<BR>*Note: Data is updated every 24 hours.<BR>Changing date setting will take effect next update.',
 );
 ?>
