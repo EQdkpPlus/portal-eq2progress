@@ -8,14 +8,16 @@
  * Date:		$Date: 2013-01-09 19:20:34 +0100 (Wed, 09 Jan 2013) $
  * -----------------------------------------------------------------------
  * @author		$Author: Darkmaeg $
- * @copyright	2006-2015 EQdkp-Plus Developer Team
+ * @copyright		2006-2017 EQdkp-Plus Developer Team
  * @link		http://eqdkp-plus.com
  * @package		eqdkp-plus
- * @version		$Rev: 00037 $
+ * @version		$Rev: 00050 $
  * 
  * $Id: eq2progress_portal.class.php 00036 2013-11-18 18:20:34Z Darkmaeg $
  * Modified Version of Hoofy's mybars progression module
  * This version populates the guild raid achievements from the Data Api
+ *
+ * V5.0 Everquest 2 Progression Module for EQDKP+ V2.3+
  * V4.3 Added Expert KA Raids
  * V4.2 DBG Changed some Achievement ID's
  * V4.1 Minor Bug Fixes
@@ -53,7 +55,7 @@ class eq2progress_portal extends portal_generic {
 	protected static $path		= 'eq2progress';
 	protected static $data		= array(
 		'name'			=> 'EQ2 Progression',
-		'version'		=> '4.3',
+		'version'		=> '5.0',
 		'author'		=> 'Darkmaeg',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Everquest 2 Progression',
@@ -297,11 +299,11 @@ class eq2progress_portal extends portal_generic {
 		if($this->config('eq2progress_headtext')){$this->header = sanitize($this->config('eq2progress_headtext'));}
 		$maxbars = 0;
 		if (($this->config('eq2progress_contested')) == True ) 		{ ($maxbars = $maxbars + 1); ($zone1 = TRUE); }
-		if (($this->config('eq2progress_arena')) == TRUE ) 			{ ($maxbars = $maxbars + 1); ($zone2 = TRUE); }
+		if (($this->config('eq2progress_arena')) == TRUE ) 		{ ($maxbars = $maxbars + 1); ($zone2 = TRUE); }
 		if (($this->config('eq2progress_harrows')) == TRUE ) 		{ ($maxbars = $maxbars + 1); ($zone3 = TRUE); }
 		if (($this->config('eq2progress_sleepers')) == TRUE ) 		{ ($maxbars = $maxbars + 1); ($zone4 = TRUE); }
 		if (($this->config('eq2progress_abhorrence')) == TRUE ) 	{ ($maxbars = $maxbars + 1); ($zone5 = TRUE); }
-		if (($this->config('eq2progress_plane')) == TRUE ) 			{ ($maxbars = $maxbars + 1); ($zone6 = TRUE); }
+		if (($this->config('eq2progress_plane')) == TRUE ) 		{ ($maxbars = $maxbars + 1); ($zone6 = TRUE); }
 		if (($this->config('eq2progress_dreadcutter')) == TRUE ) 	{ ($maxbars = $maxbars + 1); ($zone7 = TRUE); }
 		if (($this->config('eq2progress_sirens')) == TRUE ) 		{ ($maxbars = $maxbars + 1); ($zone8 = TRUE); }
 		if (($this->config('eq2progress_desert')) == TRUE ) 		{ ($maxbars = $maxbars + 1); ($zone9 = TRUE); }
@@ -328,16 +330,16 @@ class eq2progress_portal extends portal_generic {
 		if (($this->config('eq2progress_tot4')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone30 = TRUE); }
 		if (($this->config('eq2progress_siege')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone31 = TRUE); }
 		if (($this->config('eq2progress_fcazic')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone32 = TRUE); }
-		if (($this->config('eq2progress_ffd')) == TRUE )   			{ ($maxbars = $maxbars + 1); ($zone33 = TRUE); }
-		if (($this->config('eq2progress_ka1')) == TRUE )   			{ ($maxbars = $maxbars + 1); ($zone34 = TRUE); }
-		if (($this->config('eq2progress_ka2')) == TRUE )   			{ ($maxbars = $maxbars + 1); ($zone35 = TRUE); }
-		if (($this->config('eq2progress_ka3')) == TRUE )   			{ ($maxbars = $maxbars + 1); ($zone36 = TRUE); }
-		if (($this->config('eq2progress_ka4')) == TRUE )   			{ ($maxbars = $maxbars + 1); ($zone37 = TRUE); }
-		if (($this->config('eq2progress_ka5')) == TRUE )   			{ ($maxbars = $maxbars + 1); ($zone38 = TRUE); }
-		if (($this->config('eq2progress_ka6')) == TRUE )   			{ ($maxbars = $maxbars + 1); ($zone39 = TRUE); }
-		if (($this->config('eq2progress_ka7')) == TRUE )   			{ ($maxbars = $maxbars + 1); ($zone40 = TRUE); }
-		if (($this->config('eq2progress_ka8')) == TRUE )   			{ ($maxbars = $maxbars + 1); ($zone41 = TRUE); }
-		if (($this->config('eq2progress_ka9')) == TRUE )   			{ ($maxbars = $maxbars + 1); ($zone42 = TRUE); }
+		if (($this->config('eq2progress_ffd')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone33 = TRUE); }
+		if (($this->config('eq2progress_ka1')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone34 = TRUE); }
+		if (($this->config('eq2progress_ka2')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone35 = TRUE); }
+		if (($this->config('eq2progress_ka3')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone36 = TRUE); }
+		if (($this->config('eq2progress_ka4')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone37 = TRUE); }
+		if (($this->config('eq2progress_ka5')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone38 = TRUE); }
+		if (($this->config('eq2progress_ka6')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone39 = TRUE); }
+		if (($this->config('eq2progress_ka7')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone40 = TRUE); }
+		if (($this->config('eq2progress_ka8')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone41 = TRUE); }
+		if (($this->config('eq2progress_ka9')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone42 = TRUE); }
 		$arena = 0; $contested = 0; $harrows = 0; $sleeper = 0; $altar = 0; $pow = 0; $dread = 0; $sirens = 0; $djinn= 0;
 		$tov = 0; $as = 0; $tovc = 0; $king = 0; $dreadscale = 0; $deathtoll = 0; $agesend = 0; $malice1 = 0; $malice2 = 0; 
 		$malice3 = 0; $malice4 = 0; $malice5 = 0; $malice6 = 0; $aoma = 0; $fsd = 0; $eof = 0; $totc = 0; $tot1 = 0; $ffd = 0;
@@ -353,7 +355,7 @@ class eq2progress_portal extends portal_generic {
 		$gdata 	  = $guilddata['guild_list'][0];
 		$ktot = count($achieve);
 		$spacer = ""; 
-		if (($this->config('eq2progress_date')) == TRUE ) 		{ ($spacer = "Not Killed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"); }
+		if (($this->config('eq2progress_date')) == TRUE ) { ($spacer = "Not Killed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"); }
 		$cval=$this->user->lang('eq2progress_f_eq2progress_contested');
 		$c1=$spacer.'<font color="white">Vallon Zek</font><br>'; $c2=$spacer.'<font color="white">Tallon Zek</font><br>';		
 		$c3=$spacer.'<font color="white">Sullon Zek</font><br>'; $c4=$spacer.'<font color="white">Rodcet Nife</font><br>';		
@@ -792,11 +794,6 @@ class eq2progress_portal extends portal_generic {
 		//Fabled Fallen Dynasty
 		if ($acid == '2773962347')  {$ffd = $ffd + 1; $ffd1 =$kdate.'<font color="808080"><strike>Fabled Chel\'Drak</strike></font><br>';}
 		if ($acid == '238639788')   {$ffd = $ffd + 1; $ffd2 =$kdate.'<font color="808080"><strike>Fabled Xux\'laio</strike></font><br>';}
-		if ($acid == '1119419037')  {$ffd = $ffd + 1; $ffd3 =$kdate.'<font color="808080"><strike>Fabled Bonesnapper</strike></font><br>';}
-		
-		
-		
-		
 		//Kunark Ascending - Arcanna'se Spire: Order and Chaos
 		if ($acid == '444980425')  {$ka1 = $ka1 + 1; $ka11 =$kdate.'<font color="808080"><strike>Shanaira the Prestigious</strike></font>'.$ka11f.'<br>';}
 		if ($acid == '1844904577')  {$ka1 = $ka1 + 1; $ka12 =$kdate.'<font color="808080"><strike>Amalgams of Order and Chaos</strike></font>'.$ka12f.'<br>';}
@@ -888,50 +885,50 @@ class eq2progress_portal extends portal_generic {
 		if ($acid == '393840919')   {$ka71 =$fkdate.'<font color="808080"><strike>The Rejuvenating One</strike></font> FLAWLESS<br>';}
 		}
 		$killslist = array($c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8,$c9,$contested,
-						   $ar1,$ar2,$ar3,$ar4,$ar5,$ar6,$ar7,$ar8,$ar9,$ar10,$arena,
-						   $h1,$h2,$h3,$h4,$h5,$h6,$h7,$h8,$h9,$h10,$h11,$h12,$harrows,
-						   $sl1,$sl2,$sl3,$sl4,$sl5,$sl6,$sl7,$sl8,$sl9,$sl10,$sl11,$sl12,$sleeper,
-						   $a1,$a2,$a3,$a4,$a5,$a6,$altar,
-						   $p1,$p2,$p3,$p4,$p5,$p6,$p7,$pow,
-						   $d1,$d2,$d3,$dread,
-						   $sr1,$sr2,$sr3,$sr4,$sr5,$sr6,$sr7,$sr8,$sr9,$sirens,
-						   $dj1,$dj2,$djinn,
-						   $tov1,$tov2,$tov3,$tov4,$tov5,$tov6,$tov7,$tov8,$tov9,$tov10,$tov11,$tov12,$tov13,$tov14,$tov15,$tov,
-						   $as1,$as2,$as3,$as4,$as5,$as6,$as7,$as8,$as9,$as10,$as11,$as,
-						   $tovc1,$tovc2,$tovc,
-						   $king1,$king2,$king3,$king,
-						   $dreadscale1,$dreadscale2,$dreadscale3,$dreadscale4,$dreadscale5,$dreadscale6,$dreadscale7,$dreadscale8,$dreadscale,
-						   $deathtoll1,$deathtoll2,$deathtoll3,$deathtoll4,$deathtoll5,$deathtoll,
-						   $agesend1,$agesend2,$agesend3,$agesend4,$agesend,
-						   $aoma1,$aoma2,$aoma3,$aoma4,$aoma5,$aoma,
-						   $malice11,$malice12,$malice13,$malice14,$malice1,
-						   $malice21,$malice22,$malice23,$malice2,
-						   $malice31,$malice32,$malice33,$malice3,
-						   $malice41,$malice42,$malice43,$malice44,$malice45,$malice4,
-						   $malice51,$malice52,$malice53,$malice54,$malice55,$malice5,
-						   $malice61,$malice62,$malice63,$malice6,
-						   $fsd1,$fsd2,$fsd3,$fsd4,$fsd5,$fsd6,$fsd7,$fsd8,$fsd9,$fsd10,$fsd,
-						   $eof1,$eof2,$eof3,$eof4,$eof5,$eof6,$eof7,$eof8,$eof,
-						   $totc1,$totc,
-						   $tot11,$tot12,$tot13,$tot14,$tot15,$tot16,$tot17,$tot18,$tot19,$tot1,
-						   $tot21,$tot22,$tot23,$tot24,$tot25,$tot26,$tot27,$tot28,$tot2,
-						   $tot31,$tot32,$tot33,$tot34,$tot35,$tot3,
-						   $tot41,$tot42,$tot43,$tot44,$tot45,$tot46,$tot47,$tot48,$tot4,
-						   $siege1,$siege2,$siege3,$siege4,$siege5,$siege6,$siege,
-						   $fcazic1,$fcazic,
-						   $ffd1,$ffd2,$ffd3,$ffd,
-						   $ka11,$ka12,$ka13,$ka14,$ka15,$ka16,$ka1,
-						   $ka21,$ka22,$ka23,$ka24,$ka25,$ka2,
-						   $ka31,$ka32,$ka33,$ka34,$ka35,$ka3,
-						   $ka41,$ka42,$ka43,$ka44,$ka45,$ka4,
-						   $ka51,$ka52,$ka53,$ka54,$ka55,$ka5,
-						   $ka61,$ka62,$ka63,$ka64,$ka6,
-						   $ka71,$ka7,
-						   $ka81,$ka82,$ka83,$ka84,$ka85,$ka8,
-						   $ka91,$ka92,$ka93,$ka94,$ka95,$ka9
-						   );
+				   $ar1,$ar2,$ar3,$ar4,$ar5,$ar6,$ar7,$ar8,$ar9,$ar10,$arena,
+				   $h1,$h2,$h3,$h4,$h5,$h6,$h7,$h8,$h9,$h10,$h11,$h12,$harrows,
+				   $sl1,$sl2,$sl3,$sl4,$sl5,$sl6,$sl7,$sl8,$sl9,$sl10,$sl11,$sl12,$sleeper,
+				   $a1,$a2,$a3,$a4,$a5,$a6,$altar,
+				   $p1,$p2,$p3,$p4,$p5,$p6,$p7,$pow,
+				   $d1,$d2,$d3,$dread,
+				   $sr1,$sr2,$sr3,$sr4,$sr5,$sr6,$sr7,$sr8,$sr9,$sirens,
+				   $dj1,$dj2,$djinn,
+				   $tov1,$tov2,$tov3,$tov4,$tov5,$tov6,$tov7,$tov8,$tov9,$tov10,$tov11,$tov12,$tov13,$tov14,$tov15,$tov,
+				   $as1,$as2,$as3,$as4,$as5,$as6,$as7,$as8,$as9,$as10,$as11,$as,
+				   $tovc1,$tovc2,$tovc,
+				   $king1,$king2,$king3,$king,
+				   $dreadscale1,$dreadscale2,$dreadscale3,$dreadscale4,$dreadscale5,$dreadscale6,$dreadscale7,$dreadscale8,$dreadscale,
+				   $deathtoll1,$deathtoll2,$deathtoll3,$deathtoll4,$deathtoll5,$deathtoll,
+				   $agesend1,$agesend2,$agesend3,$agesend4,$agesend,
+				   $aoma1,$aoma2,$aoma3,$aoma4,$aoma5,$aoma,
+				   $malice11,$malice12,$malice13,$malice14,$malice1,
+				   $malice21,$malice22,$malice23,$malice2,
+				   $malice31,$malice32,$malice33,$malice3,
+				   $malice41,$malice42,$malice43,$malice44,$malice45,$malice4,
+				   $malice51,$malice52,$malice53,$malice54,$malice55,$malice5,
+				   $malice61,$malice62,$malice63,$malice6,
+				   $fsd1,$fsd2,$fsd3,$fsd4,$fsd5,$fsd6,$fsd7,$fsd8,$fsd9,$fsd10,$fsd,
+				   $eof1,$eof2,$eof3,$eof4,$eof5,$eof6,$eof7,$eof8,$eof,
+				   $totc1,$totc,
+				   $tot11,$tot12,$tot13,$tot14,$tot15,$tot16,$tot17,$tot18,$tot19,$tot1,
+				   $tot21,$tot22,$tot23,$tot24,$tot25,$tot26,$tot27,$tot28,$tot2,
+				   $tot31,$tot32,$tot33,$tot34,$tot35,$tot3,
+				   $tot41,$tot42,$tot43,$tot44,$tot45,$tot46,$tot47,$tot48,$tot4,
+				   $siege1,$siege2,$siege3,$siege4,$siege5,$siege6,$siege,
+				   $fcazic1,$fcazic,
+				   $ffd1,$ffd2,$ffd3,$ffd,
+				   $ka11,$ka12,$ka13,$ka14,$ka15,$ka16,$ka1,
+				   $ka21,$ka22,$ka23,$ka24,$ka25,$ka2,
+				   $ka31,$ka32,$ka33,$ka34,$ka35,$ka3,
+				   $ka41,$ka42,$ka43,$ka44,$ka45,$ka4,
+				   $ka51,$ka52,$ka53,$ka54,$ka55,$ka5,
+				   $ka61,$ka62,$ka63,$ka64,$ka6,
+				   $ka71,$ka7,
+				   $ka81,$ka82,$ka83,$ka84,$ka85,$ka8,
+				   $ka91,$ka92,$ka93,$ka94,$ka95,$ka9
+				   );
 		$this->pdc->put('portal.module.eq2progress.'.$this->root_path, $killslist, 3600);
-				}
+		}
 		$contes = ($killslist[0].$killslist[1].$killslist[2].$killslist[3].$killslist[4]
 		           .$killslist[5].$killslist[6].$killslist[7].$killslist[8]);
 		$zonetotal1 = ($killslist[9]);
@@ -957,7 +954,7 @@ class eq2progress_portal extends portal_generic {
 		$zonetotal9 = ($killslist[78]);
 		$tears = ($killslist[79].$killslist[80].$killslist[81].$killslist[82].$killslist[83].$killslist[84].$killslist[85].$killslist[86]
 		          .$killslist[87].$killslist[88].$killslist[89].$killslist[90].$killslist[91].$killslist[92].$killslist[93]);
-	    $zonetotal10 = ($killslist[94]);
+	 	$zonetotal10 = ($killslist[94]);
 		$ascent = ($killslist[95].$killslist[96].$killslist[97].$killslist[98].$killslist[99].$killslist[100]
 		           .$killslist[101].$killslist[102].$killslist[103].$killslist[104].$killslist[105]);
 		$zonetotal11 = ($killslist[106]);
@@ -971,10 +968,10 @@ class eq2progress_portal extends portal_generic {
 		$zonetotal15 = ($killslist[128]);
 		$agesen = ($killslist[129].$killslist[130].$killslist[131].$killslist[132]);
 		$zonetotal16 = ($killslist[133]);
-        $aomavatar = ($killslist[134].$killslist[135].$killslist[136].$killslist[137].$killslist[138]);
+      		$aomavatar = ($killslist[134].$killslist[135].$killslist[136].$killslist[137].$killslist[138]);
 		$zonetotal17 = ($killslist[139]);
 		$mal1 = ($killslist[140].$killslist[141].$killslist[142].$killslist[143]);
-		 $zonetotal18 = ($killslist[144]);
+		$zonetotal18 = ($killslist[144]);
 		$mal2 = ($killslist[145].$killslist[146].$killslist[147]);
 		$zonetotal19 = ($killslist[148]);
 		$mal3 = ($killslist[149].$killslist[150].$killslist[151]);
@@ -1055,16 +1052,16 @@ class eq2progress_portal extends portal_generic {
 		$zonename30 = $tot4val;       $zonemax30 = $tot4max;       $zonetip30 = $terr4;
 		$zonename31 = $siegeval;      $zonemax31 = $siegemax;      $zonetip31 = $tsiege;
 		$zonename32 = $fcazicval;     $zonemax32 = $fcazicmax;     $zonetip32 = $tfcazic;
-		$zonename33 = $ffdval;     	  $zonemax33 = $ffdmax;        $zonetip33 = $tffd;
-		$zonename34 = $ka1val;     	  $zonemax34 = $ka1max;        $zonetip34 = $kuna1;
-		$zonename35 = $ka2val;     	  $zonemax35 = $ka2max;        $zonetip35 = $kuna2;
-		$zonename36 = $ka3val;     	  $zonemax36 = $ka3max;        $zonetip36 = $kuna3;
-		$zonename37 = $ka4val;     	  $zonemax37 = $ka4max;        $zonetip37 = $kuna4;
-		$zonename38 = $ka5val;     	  $zonemax38 = $ka5max;        $zonetip38 = $kuna5;
-		$zonename39 = $ka6val;     	  $zonemax39 = $ka6max;        $zonetip39 = $kuna6;
-		$zonename40 = $ka7val;     	  $zonemax40 = $ka7max;        $zonetip40 = $kuna7;
-		$zonename41 = $ka8val;     	  $zonemax41 = $ka8max;        $zonetip41 = $kuna8;
-		$zonename42 = $ka9val;     	  $zonemax42 = $ka9max;        $zonetip42 = $kuna9;
+		$zonename33 = $ffdval;        $zonemax33 = $ffdmax;        $zonetip33 = $tffd;
+		$zonename34 = $ka1val;        $zonemax34 = $ka1max;        $zonetip34 = $kuna1;
+		$zonename35 = $ka2val;        $zonemax35 = $ka2max;        $zonetip35 = $kuna2;
+		$zonename36 = $ka3val;        $zonemax36 = $ka3max;        $zonetip36 = $kuna3;
+		$zonename37 = $ka4val;        $zonemax37 = $ka4max;        $zonetip37 = $kuna4;
+		$zonename38 = $ka5val;        $zonemax38 = $ka5max;        $zonetip38 = $kuna5;
+		$zonename39 = $ka6val;        $zonemax39 = $ka6max;        $zonetip39 = $kuna6;
+		$zonename40 = $ka7val;        $zonemax40 = $ka7max;        $zonetip40 = $kuna7;
+		$zonename41 = $ka8val;        $zonemax41 = $ka8max;        $zonetip41 = $kuna8;
+		$zonename42 = $ka9val;        $zonemax42 = $ka9max;        $zonetip42 = $kuna9;
 		$out = ''; 
 			for($i=1;$i<=42;$i++) {
 			$check = ${"zone".$i};
@@ -1099,7 +1096,7 @@ class eq2progress_portal extends portal_generic {
 			'txtalign'	=> 'center',
 		)), 'content' => $tooltip);
 		$tooltipopts	= array_merge($tooltipopts, $arrPosition);
-		return new htooltip('eq2progress_tt'.$num, $tooltipopts);
+		return (new htooltip('eq2progress_tt'.$num, $tooltipopts))->output();
 	}
 }
 ?>
