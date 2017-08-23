@@ -81,6 +81,8 @@ $lang = array(
 	'eq2progress_f_eq2progress_ka7'         => 'Chamber of Rejuvenation',
 	'eq2progress_f_eq2progress_ka8'         => 'Arcanna\'se Spire (Expert)',
 	'eq2progress_f_eq2progress_ka9'         => 'Crypt of Dalnir (Expert)',
+	'eq2progress_f_eq2progress_ka1a'        => 'Ruins of Kaesora (Expert)',
+	'eq2progress_f_eq2progress_ka1b'        => 'Lost City of Torsis (Expert)',
 	'eq2progress_f_eq2progress_date'	=> 'Show Date Killed?<BR>*Note: Data is updated every 24 hours.<BR>Changing date setting will take effect next update.',
 );
 ?>
