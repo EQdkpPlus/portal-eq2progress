@@ -17,6 +17,7 @@
  * Modified Version of Hoofy's mybars progression module
  *
  * This version populates the guild raid achievements from the Data Api
+ * V5.4 Some Planes of Prophecy Bug Fixes
  * V5.3 Added Planes of Prophecy
  * V5.2 Added New Expert KA Raids
  * V5.1 Minor Bug Fix
@@ -58,7 +59,7 @@ class eq2progress_portal extends portal_generic {
 	protected static $path		= 'eq2progress';
 	protected static $data		= array(
 		'name'			=> 'EQ2 Progression',
-		'version'		=> '5.3',
+		'version'		=> '5.4',
 		'author'		=> 'Darkmaeg',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Everquest 2 Progression',
@@ -967,61 +968,61 @@ class eq2progress_portal extends portal_generic {
 		if ($acid == '660244929')  {$ka1b = $ka1b + 1; $ka1b3 =$kdate.'<font color="808080"><strike>The Black Reaver</strike></font><br>';}
 		if ($acid == '2849345058') {$ka1b = $ka1b + 1; $ka1b4 =$kdate.'<font color="808080"><strike>The Captain of the Guard</strike></font><br>';}
 		if ($acid == '1702858428') {$ka1b = $ka1b + 1; $ka1b5 =$kdate.'<font color="808080"><strike>Gyrating Green Slime</strike></font><br>';}
-		}
 		//PoP 1
-		if ($acid == '2146742008') {$pop1 = $pop1 + 1; $pop11 =$kdate.'<font color="808080"><strike>Mob 1</strike></font><br>';}
-		if ($acid == '4080367354') {$pop1 = $pop1 + 1; $pop12 =$kdate.'<font color="808080"><strike>Mob 2</strike></font><br>';}
-		if ($acid == '1984901606') {$pop1 = $pop1 + 1; $pop13 =$kdate.'<font color="808080"><strike>Mob 3</strike></font><br>';}
-		if ($acid == '3080465414') {$pop1 = $pop1 + 1; $pop14 =$kdate.'<font color="808080"><strike>Mob 4</strike></font><br>';}
-		if ($acid == '2009285795') {$pop1 = $pop1 + 1; $pop15 =$kdate.'<font color="808080"><strike>Mob 5</strike></font><br>';}
-		if ($acid == '1690316727') {$pop1 = $pop1 + 1; $pop16 =$kdate.'<font color="808080"><strike>Mob 6</strike></font><br>';}
-		if ($acid == '2575904811') {$pop1 = $pop1 + 1; $pop17 =$kdate.'<font color="808080"><strike>Mob 7</strike></font><br>';}
-		if ($acid == '3782384065') {$pop1 = $pop1 + 1; $pop18 =$kdate.'<font color="808080"><strike>Mob 8</strike></font><br>';}
-		if ($acid == '647338562')  {$pop1 = $pop1 + 1; $pop19 =$kdate.'<font color="808080"><strike>Mob 9</strike></font><br>';}
-		if ($acid == '844810124')  {$pop1 = $pop1 + 1; $pop110 =$kdate.'<font color="808080"><strike>Mob 10</strike></font><br>';}
-		if ($acid == '1829002578') {$pop1 = $pop1 + 1; $pop111 =$kdate.'<font color="808080"><strike>Mob 10</strike></font><br>';}
-		if ($acid == '1214149456') {$pop1 = $pop1 + 1; $pop112 =$kdate.'<font color="808080"><strike>Mob 10</strike></font><br>';}
-		if ($acid == '3675500385') {$pop1 = $pop1 + 1; $pop113 =$kdate.'<font color="808080"><strike>Mob 10</strike></font><br>';}
+		if ($acid == '2146742008') {$pop1 = $pop1 + 1; $pop11 =$kdate.'<font color="808080"><strike>Manaetic Behemoth</strike></font><br>';}
+		if ($acid == '4080367354') {$pop1 = $pop1 + 1; $pop12 =$kdate.'<font color="808080"><strike>Junkyard Mawg</strike></font><br>';}
+		if ($acid == '1984901606') {$pop1 = $pop1 + 1; $pop13 =$kdate.'<font color="808080"><strike>Operator Figl</strike></font><br>';}
+		if ($acid == '3080465414') {$pop1 = $pop1 + 1; $pop14 =$kdate.'<font color="808080"><strike>Meldrath the Malignant</strike></font><br>';}
+		if ($acid == '2009285795') {$pop1 = $pop1 + 1; $pop15 =$kdate.'<font color="808080"><strike>Meldrath the Mechanized</strike></font><br>';}
+		if ($acid == '1690316727') {$pop1 = $pop1 + 1; $pop16 =$kdate.'<font color="808080"><strike>Construct Automaton</strike></font><br>';}
+		if ($acid == '2575904811') {$pop1 = $pop1 + 1; $pop17 =$kdate.'<font color="808080"><strike>Gearbox the Energy Siphon</strike></font><br>';}
+		if ($acid == '3782384065') {$pop1 = $pop1 + 1; $pop18 =$kdate.'<font color="808080"><strike>The Junk Beast</strike></font><br>';}
+		if ($acid == '647338562')  {$pop1 = $pop1 + 1; $pop19 =$kdate.'<font color="808080"><strike>Karnah of the Source</strike></font><br>';}
+		if ($acid == '844810124')  {$pop1 = $pop1 + 1; $pop110 =$kdate.'<font color="808080"><strike>Tin Overseer Omega</strike></font><br>';}
+		if ($acid == '1829002578') {$pop1 = $pop1 + 1; $pop111 =$kdate.'<font color="808080"><strike>Tin Overseer Alpha</strike></font><br>';}
+		if ($acid == '1214149456') {$pop1 = $pop1 + 1; $pop112 =$kdate.'<font color="808080"><strike>Manaetic Prototype XI</strike></font><br>';}
+		if ($acid == '3675500385') {$pop1 = $pop1 + 1; $pop113 =$kdate.'<font color="808080"><strike>Manaetic Prototype IX</strike></font><br>';}
 		//PoP 2
-		if ($acid == '3932633806') {$pop2 = $pop2 + 1; $pop21 =$kdate.'<font color="808080"><strike>Mob 1</strike></font><br>';}
-		if ($acid == '3161846854') {$pop2 = $pop2 + 1; $pop22 =$kdate.'<font color="808080"><strike>Mob 2</strike></font><br>';}
-		if ($acid == '1394584892') {$pop2 = $pop2 + 1; $pop23 =$kdate.'<font color="808080"><strike>Mob 3</strike></font><br>';}
-		if ($acid == '627954835')  {$pop2 = $pop2 + 1; $pop24 =$kdate.'<font color="808080"><strike>Mob 4</strike></font><br>';}
-		if ($acid == '3513108633') {$pop2 = $pop2 + 1; $pop25 =$kdate.'<font color="808080"><strike>Mob 5</strike></font><br>';}
-		if ($acid == '3212583008') {$pop2 = $pop2 + 1; $pop26 =$kdate.'<font color="808080"><strike>Mob 6</strike></font><br>';}
-		if ($acid == '2321448756') {$pop2 = $pop2 + 1; $pop27 =$kdate.'<font color="808080"><strike>Mob 7</strike></font><br>';}
-		if ($acid == '3336733348') {$pop2 = $pop2 + 1; $pop28 =$kdate.'<font color="808080"><strike>Mob 8</strike></font><br>';}
-		if ($acid == '1181154196') {$pop2 = $pop2 + 1; $pop29 =$kdate.'<font color="808080"><strike>Mob 9</strike></font><br>';}
-		if ($acid == '2676717168') {$pop2 = $pop2 + 1; $pop210 =$kdate.'<font color="808080"><strike>Mob 10</strike></font><br>';}
-		if ($acid == '375114535')  {$pop2 = $pop2 + 1; $pop211 =$kdate.'<font color="808080"><strike>Mob 10</strike></font><br>';}
+		if ($acid == '3932633806') {$pop2 = $pop2 + 1; $pop21 =$kdate.'<font color="808080"><strike>Bertoxxulous</strike></font><br>';}
+		if ($acid == '3161846854') {$pop2 = $pop2 + 1; $pop22 =$kdate.'<font color="808080"><strike>Skal\'sli the Wretched</strike></font><br>';}
+		if ($acid == '1394584892') {$pop2 = $pop2 + 1; $pop23 =$kdate.'<font color="808080"><strike>Nightlure the Fleshfeaster</strike></font><br>';}
+		if ($acid == '627954835')  {$pop2 = $pop2 + 1; $pop24 =$kdate.'<font color="808080"><strike>Grummus</strike></font><br>';}
+		if ($acid == '3513108633') {$pop2 = $pop2 + 1; $pop25 =$kdate.'<font color="808080"><strike>Pox</strike></font><br>';}
+		if ($acid == '3212583008') {$pop2 = $pop2 + 1; $pop26 =$kdate.'<font color="808080"><strike>Corpulus</strike></font><br>';}
+		if ($acid == '2321448756') {$pop2 = $pop2 + 1; $pop27 =$kdate.'<font color="808080"><strike>Plaguen the Piper</strike></font><br>';}
+		if ($acid == '3336733348') {$pop2 = $pop2 + 1; $pop28 =$kdate.'<font color="808080"><strike>Wretch</strike></font><br>';}
+		if ($acid == '1181154196') {$pop2 = $pop2 + 1; $pop29 =$kdate.'<font color="808080"><strike>Rankle</strike></font><br>';}
+		if ($acid == '2676717168') {$pop2 = $pop2 + 1; $pop210 =$kdate.'<font color="808080"><strike>Rythrak and Resnak</strike></font><br>';}
+		if ($acid == '375114535')  {$pop2 = $pop2 + 1; $pop211 =$kdate.'<font color="808080"><strike>Dyspepsya</strike></font><br>';}
 		//PoP 3
-		if ($acid == '2267484253') {$pop3 = $pop3 + 1; $pop311 =$kdate.'<font color="808080"><strike>Mob 1</strike></font><br>';}
-		if ($acid == '229631444')  {$pop3 = $pop3 + 1; $pop32 =$kdate.'<font color="808080"><strike>Mob 2</strike></font><br>';}
-		if ($acid == '2205136125') {$pop3 = $pop3 + 1; $pop33 =$kdate.'<font color="808080"><strike>Mob 3</strike></font><br>';}
-		if ($acid == '1649076159') {$pop3 = $pop3 + 1; $pop34 =$kdate.'<font color="808080"><strike>Mob 4</strike></font><br>';}
-		if ($acid == '1489322621') {$pop3 = $pop3 + 1; $pop35 =$kdate.'<font color="808080"><strike>Mob 5</strike></font><br>';}
-		if ($acid == '1575159900') {$pop3 = $pop3 + 1; $pop36 =$kdate.'<font color="808080"><strike>Mob 6</strike></font><br>';}
-		if ($acid == '3936541879') {$pop3 = $pop3 + 1; $pop37 =$kdate.'<font color="808080"><strike>Mob 7</strike></font><br>';}
-		if ($acid == '3847010083') {$pop3 = $pop3 + 1; $pop38 =$kdate.'<font color="808080"><strike>Mob 8</strike></font><br>';}
-		if ($acid == '1343817609') {$pop3 = $pop3 + 1; $pop39 =$kdate.'<font color="808080"><strike>Mob 9</strike></font><br>';}
-		if ($acid == '1389934993') {$pop3 = $pop3 + 1; $pop310 =$kdate.'<font color="808080"><strike>Mob 10</strike></font><br>';}
-		if ($acid == '213245945')  {$pop3 = $pop3 + 1; $pop311 =$kdate.'<font color="808080"><strike>Mob 10</strike></font><br>';}
+		if ($acid == '2267484253') {$pop3 = $pop3 + 1; $pop311 =$kdate.'<font color="808080"><strike>Agnarr the Storm Lord</strike></font><br>';}
+		if ($acid == '229631444')  {$pop3 = $pop3 + 1; $pop32 =$kdate.'<font color="808080"><strike>Cyclone and Thundercall</strike></font><br>';}
+		if ($acid == '2205136125') {$pop3 = $pop3 + 1; $pop33 =$kdate.'<font color="808080"><strike>Stormtide and Sandstorm/strike></font><br>';}
+		if ($acid == '1649076159') {$pop3 = $pop3 + 1; $pop34 =$kdate.'<font color="808080"><strike>Wavecrasher and Firestorm</strike></font><br>';}
+		if ($acid == '1489322621') {$pop3 = $pop3 + 1; $pop35 =$kdate.'<font color="808080"><strike>Kuanbyr Hailstorm</strike></font><br>';}
+		if ($acid == '1575159900') {$pop3 = $pop3 + 1; $pop36 =$kdate.'<font color="808080"><strike>Sandstorm, Sutherland, Stormseer, and Steelhorn</strike></font><br>';}
+		if ($acid == '3936541879') {$pop3 = $pop3 + 1; $pop37 =$kdate.'<font color="808080"><strike>Erech Eyford</strike></font><br>';}
+		if ($acid == '3847010083') {$pop3 = $pop3 + 1; $pop38 =$kdate.'<font color="808080"><strike>Thunderclap and Skyfury</strike></font><br>';}
+		if ($acid == '1343817609') {$pop3 = $pop3 + 1; $pop39 =$kdate.'<font color="808080"><strike>Eindride Icestorm</strike></font><br>';}
+		if ($acid == '1389934993') {$pop3 = $pop3 + 1; $pop310 =$kdate.'<font color="808080"><strike>Wybjorn</strike></font><br>';}
+		if ($acid == '213245945')  {$pop3 = $pop3 + 1; $pop311 =$kdate.'<font color="808080"><strike>Valbrand and Thangbrand</strike></font><br>';}
 		//PoP 4
-		if ($acid == '3852789232') {$pop4 = $pop4 + 1; $pop41 =$kdate.'<font color="808080"><strike>Mob 1</strike></font><br>';}
-		if ($acid == '1250872239') {$pop4 = $pop4 + 1; $pop42 =$kdate.'<font color="808080"><strike>Mob 2</strike></font><br>';}
-		if ($acid == '1946925680') {$pop4 = $pop4 + 1; $pop43 =$kdate.'<font color="808080"><strike>Mob 3</strike></font><br>';}
-		if ($acid == '212967752')  {$pop4 = $pop4 + 1; $pop44 =$kdate.'<font color="808080"><strike>Mob 4</strike></font><br>';}
-		if ($acid == '1357532901') {$pop4 = $pop4 + 1; $pop45 =$kdate.'<font color="808080"><strike>Mob 5</strike></font><br>';}
-		if ($acid == '3265328397') {$pop4 = $pop4 + 1; $pop46 =$kdate.'<font color="808080"><strike>Mob 6</strike></font><br>';}
-		if ($acid == '779361641')  {$pop4 = $pop4 + 1; $pop47 =$kdate.'<font color="808080"><strike>Mob 7</strike></font><br>';}
-		if ($acid == '1938354604') {$pop4 = $pop4 + 1; $pop48 =$kdate.'<font color="808080"><strike>Mob 8</strike></font><br>';}
-		if ($acid == '3971462884') {$pop4 = $pop4 + 1; $pop49 =$kdate.'<font color="808080"><strike>Mob 9</strike></font><br>';}
-		if ($acid == '3292809226') {$pop4 = $pop4 + 1; $pop410 =$kdate.'<font color="808080"><strike>Mob 10</strike></font><br>';}
-		if ($acid == '3062116687') {$pop4 = $pop4 + 1; $pop411 =$kdate.'<font color="808080"><strike>Mob 10</strike></font><br>';}
+		if ($acid == '3852789232') {$pop4 = $pop4 + 1; $pop41 =$kdate.'<font color="808080"><strike>Solusek Ro</strike></font><br>';}
+		if ($acid == '1250872239') {$pop4 = $pop4 + 1; $pop42 =$kdate.'<font color="808080"><strike>Grezou</strike></font><br>';}
+		if ($acid == '1946925680') {$pop4 = $pop4 + 1; $pop43 =$kdate.'<font color="808080"><strike>Feridus Emberblaze</strike></font><br>';}
+		if ($acid == '212967752')  {$pop4 = $pop4 + 1; $pop44 =$kdate.'<font color="808080"><strike>Arlyxir</strike></font><br>';}
+		if ($acid == '1357532901') {$pop4 = $pop4 + 1; $pop45 =$kdate.'<font color="808080"><strike>Rizlona</strike></font><br>';}
+		if ($acid == '3265328397') {$pop4 = $pop4 + 1; $pop46 =$kdate.'<font color="808080"><strike>Guardian and Protector of Dresolik</strike></font><br>';}
+		if ($acid == '779361641')  {$pop4 = $pop4 + 1; $pop47 =$kdate.'<font color="808080"><strike>Brundin of the Guard</strike></font><br>';}
+		if ($acid == '1938354604') {$pop4 = $pop4 + 1; $pop48 =$kdate.'<font color="808080"><strike>Amohn</strike></font><br>';}
+		if ($acid == '3971462884') {$pop4 = $pop4 + 1; $pop49 =$kdate.'<font color="808080"><strike>Bling</strike></font><br>';}
+		if ($acid == '3292809226') {$pop4 = $pop4 + 1; $pop410 =$kdate.'<font color="808080"><strike>Veleroth and Zrexul</strike></font><br>';}
+		if ($acid == '3062116687') {$pop4 = $pop4 + 1; $pop411 =$kdate.'<font color="808080"><strike>Ferris</strike></font><br>';}
 		//PoP 5
-		if ($acid == '3241596997') {$pop5 = $pop5 + 1; $pop51 =$kdate.'<font color="808080"><strike>Mob 1</strike></font><br>';}
-		if ($acid == '329034657') {$pop5 = $pop5 + 1; $pop52 =$kdate.'<font color="808080"><strike>Mob 2</strike></font><br>';}
-		if ($acid == '1016582163') {$pop5 = $pop5 + 1; $pop53 =$kdate.'<font color="808080"><strike>Mob 3</strike></font><br>';}
+		if ($acid == '3241596997') {$pop5 = $pop5 + 1; $pop51 =$kdate.'<font color="808080"><strike>Rheumus, Harbinger of Tarew Marr</strike></font><br>';}
+		if ($acid == '329034657') {$pop5 = $pop5 + 1; $pop52 =$kdate.'<font color="808080"><strike>Dyronis, Harbinger of E\'ci</strike></font><br>';}
+		if ($acid == '1016582163') {$pop5 = $pop5 + 1; $pop53 =$kdate.'<font color="808080"><strike>Eurold, Harbinger of Povar</strike></font><br>';}
+		}
 		//Flawless KA
 		for ($b=0; $b<=$ktot; $b++) {
 		$acid = $achieve[$b]['id'];
