@@ -89,6 +89,7 @@ $lang = array(
 	'eq2progress_f_eq2progress_pop4'        => 'Solusek Ro\'s Tower',
 	'eq2progress_f_eq2progress_pop5'        => 'Brachish Vaults',
 	'eq2progress_f_eq2progress_popsoh'      => 'Shard of Hate',
+	'eq2progress_f_eq2progress_ykesha'      => 'Ykesha\'s Inner Stronghold',
 	'eq2progress_f_eq2progress_date'	=> 'Show Date Killed?<BR>*Note: Data is updated every 24 hours.<BR>Changing date setting will take effect next update.',
 );
 ?>
