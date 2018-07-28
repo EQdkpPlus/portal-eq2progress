@@ -17,6 +17,7 @@
  * Modified Version of Hoofy's mybars progression module
  *
  * This version populates the guild raid achievements from the Data Api
+ * V5.6 Added Fabled Ykesha's Inner Stronghold
  * V5.5 Added Shard of Hate
  * V5.4 Some Planes of Prophecy Bug Fixes
  * V5.3 Added Planes of Prophecy
@@ -60,7 +61,7 @@ class eq2progress_portal extends portal_generic {
 	protected static $path		= 'eq2progress';
 	protected static $data		= array(
 		'name'			=> 'EQ2 Progression',
-		'version'		=> '5.5',
+		'version'		=> '5.6',
 		'author'		=> 'Darkmaeg',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Everquest 2 Progression',
@@ -331,6 +332,11 @@ class eq2progress_portal extends portal_generic {
 				'language'	=> 'eq2progress_popsoh',
 				'type'	=> 'radio',
 			),
+			'eq2progress_ykesha'	=> array(
+				'name'		=> 'eq2progress_ykesha',
+				'language'	=> 'eq2progress_ykesha',
+				'type'	=> 'radio',
+			),
 			'eq2progress_date'	=> array(
 				'name'		=> 'eq2progress_date',
 				'language'	=> 'eq2progress_date',
@@ -393,14 +399,15 @@ class eq2progress_portal extends portal_generic {
 		if (($this->config('eq2progress_pop4')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone48 = TRUE); }
 		if (($this->config('eq2progress_pop5')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone49 = TRUE); }
 		if (($this->config('eq2progress_popsoh')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone50 = TRUE); }
+		if (($this->config('eq2progress_ykesha')) == TRUE )   		{ ($maxbars = $maxbars + 1); ($zone51 = TRUE); }
 		$arena = 0; $contested = 0; $harrows = 0; $sleeper = 0; $altar = 0; $pow = 0; $dread = 0; $sirens = 0; $djinn= 0;
 		$tov = 0; $as = 0; $tovc = 0; $king = 0; $dreadscale = 0; $deathtoll = 0; $agesend = 0; $malice1 = 0; $malice2 = 0; 
 		$malice3 = 0; $malice4 = 0; $malice5 = 0; $malice6 = 0; $aoma = 0; $fsd = 0; $eof = 0; $totc = 0; $tot1 = 0; $ffd = 0;
 		$tot2 = 0; $tot3 = 0; $tot4 = 0; $siege = 0; $fcazic = 0; $ka1 = 0; $ka2 = 0; $ka3 = 0; $ka4 = 0; $ka5 = 0; $ka6 = 0; $ka7 = 0;
-		$ka8 = 0; $ka9 = 0; $ka1a = 0; $ka1b = 0; $pop1 = 0; $pop2 = 0; $pop3 = 0; $pop4 = 0; $pop5 = 0; $popsoh = 0;
+		$ka8 = 0; $ka9 = 0; $ka1a = 0; $ka1b = 0; $pop1 = 0; $pop2 = 0; $pop3 = 0; $pop4 = 0; $pop5 = 0; $popsoh = 0; $ykesha = 0;
 		$arenamax = 10; $contmax = 9; $harrowmax = 12; $sleepermax = 12; $altarmax = 6; $powmax = 7; $dreadmax = 3; $sirenmax = 9; $djinnmax = 2; $eofmax = 8; $tovmax = 15; $asmax = 11; $tovcmax = 2; $kingmax = 3; $dreadscalemax = 8; $deathtollmax = 5; $agesendmax = 4; $malice1max = 4; $malice2max = 3; $malice3max = 3; $malice4max = 5; $malice5max = 5; $malice6max = 3; 
 		$aomamax = 5; $fsdmax = 10; $totcmax = 1; $tot1max = 9; $tot2max = 8; $tot3max = 5; $tot4max = 8; $siegemax = 6; $fcazicmax = 1; $ffdmax = 3; $ka1max = 6; $ka2max = 5; $ka3max = 5; $ka4max = 5; $ka5max = 5; $ka6max = 4; $ka7max = 1;
-		$ka8max = 5; $ka9max = 5; $ka1amax = 5; $ka1bmax = 5; $pop1max = 13; $pop2max = 11; $pop3max = 11; $pop4max = 11; $pop5max = 3; $popsohmax = 25;
+		$ka8max = 5; $ka9max = 5; $ka1amax = 5; $ka1bmax = 5; $pop1max = 13; $pop2max = 11; $pop3max = 11; $pop4max = 11; $pop5max = 3; $popsohmax = 25; $ykeshamax = 5;
 		$this->game->new_object('eq2_daybreak', 'daybreak', array($this->config->get('uc_server_loc'), $this->config->get('uc_data_lang')));
 		if(!is_object($this->game->obj['daybreak'])) return "";
 		$guilddata = $this->game->obj['daybreak']->guildinfo($this->config->get('guildtag'), $this->config->get('servername'), false);
@@ -692,6 +699,12 @@ class eq2progress_portal extends portal_generic {
 		$popsoh23=$spacer.'<font color="white">Phantom Wraith</font><br>';
 		$popsoh24=$spacer.'<font color="white">High Priest M\'kari</font><br>';
 		$popsoh25=$spacer.'<font color="white">Coercer T\'valla</font><br>';
+		$ykeshaval=$this->user->lang('eq2progress_f_eq2progress_ykesha');
+		$ykesha1=$spacer.'<font color="white">Ykesha</font><br>';
+		$ykesha2=$spacer.'<font color="white">Tyrannus the Dark</font><br>';
+		$ykesha3=$spacer.'<font color="white">Kultak the Cruel</font><br>';
+		$ykesha4=$spacer.'<font color="white">Field General Uktap</font><br>';
+		$ykesha5=$spacer.'<font color="white">Strange Stalker</font><br>';
 		//Check which have been killed
 		$killslist = $this->pdc->get('portal.module.eq2progress.'.$this->root_path);
 				if (!$killslist){
@@ -1084,6 +1097,12 @@ class eq2progress_portal extends portal_generic {
 		if ($acid == '3446180992') {$popsoh = $popsoh + 1; $popsoh23 =$kdate.'<font color="808080"><strike>Phantom Wraith</strike></font><br>';}
 		if ($acid == '286557069')  {$popsoh = $popsoh + 1;  $popsoh24 =$kdate.'<font color="808080"><strike>High Priest M\'kari</strike></font><br>';}
 		if ($acid == '1938647275') {$popsoh = $popsoh + 1; $popsoh25 =$kdate.'<font color="808080"><strike>Coercer T\'valla</strike></font><br>';}
+		//Fabled Ykesha
+		if ($acid == '207258705') {$ykesha = $ykesha + 1; $ykesha1 =$kdate.'<font color="808080"><strike>Ykesha</strike></font><br>';}
+		if ($acid == '2477915221') {$ykesha = $ykesha + 1; $ykesha2 =$kdate.'<font color="808080"><strike>Tyrannus the Dark</strike></font><br>';}
+		if ($acid == '3569616250') {$ykesha = $ykesha + 1; $ykesha3 =$kdate.'<font color="808080"><strike>Kultak the Cruel</strike></font><br>';}
+		if ($acid == '1595123049') {$ykesha = $ykesha + 1; $ykesha4 =$kdate.'<font color="808080"><strike>Field General Uktap</strike></font><br>';}
+		if ($acid == '1867210402') {$ykesha = $ykesha + 1; $ykesha5 =$kdate.'<font color="808080"><strike>Strange Stalker</strike></font><br>';}
 		}
 		//Flawless KA
 		for ($b=0; $b<=$ktot; $b++) {
@@ -1245,6 +1264,7 @@ class eq2progress_portal extends portal_generic {
 						   $popsoh1,$popsoh2,$popsoh3,$popsoh4,$popsoh5,$popsoh6,$popsoh7,$popsoh8,$popsoh9,$popsoh10,
 						   $popsoh11,$popsoh12,$popsoh13,$popsoh14,$popsoh15,$popsoh16,$popsoh17,$popsoh18,$popsoh19,$popsoh20,
 						   $popsoh21,$popsoh22,$popsoh23,$popsoh24,$popsoh25,$popsoh,
+						   $ykesha1,$ykesha2,$ykesha3,$ykesha4,$ykesha5,$ykesha,
 						   );
 		$this->pdc->put('portal.module.eq2progress.'.$this->root_path, $killslist, 3600);
 				}
@@ -1273,7 +1293,7 @@ class eq2progress_portal extends portal_generic {
 		$zonetotal9 = ($killslist[78]);
 		$tears = ($killslist[79].$killslist[80].$killslist[81].$killslist[82].$killslist[83].$killslist[84].$killslist[85].$killslist[86]
 		          .$killslist[87].$killslist[88].$killslist[89].$killslist[90].$killslist[91].$killslist[92].$killslist[93]);
-	    $zonetotal10 = ($killslist[94]);
+		$zonetotal10 = ($killslist[94]);
 		$ascent = ($killslist[95].$killslist[96].$killslist[97].$killslist[98].$killslist[99].$killslist[100]
 		           .$killslist[101].$killslist[102].$killslist[103].$killslist[104].$killslist[105]);
 		$zonetotal11 = ($killslist[106]);
@@ -1287,10 +1307,10 @@ class eq2progress_portal extends portal_generic {
 		$zonetotal15 = ($killslist[128]);
 		$agesen = ($killslist[129].$killslist[130].$killslist[131].$killslist[132]);
 		$zonetotal16 = ($killslist[133]);
-        $aomavatar = ($killslist[134].$killslist[135].$killslist[136].$killslist[137].$killslist[138]);
+   		$aomavatar = ($killslist[134].$killslist[135].$killslist[136].$killslist[137].$killslist[138]);
 		$zonetotal17 = ($killslist[139]);
 		$mal1 = ($killslist[140].$killslist[141].$killslist[142].$killslist[143]);
-		 $zonetotal18 = ($killslist[144]);
+		$zonetotal18 = ($killslist[144]);
 		$mal2 = ($killslist[145].$killslist[146].$killslist[147]);
 		$zonetotal19 = ($killslist[148]);
 		$mal3 = ($killslist[149].$killslist[150].$killslist[151]);
@@ -1367,6 +1387,8 @@ class eq2progress_portal extends portal_generic {
 					 $killslist[369].$killslist[370].$killslist[371].$killslist[372].$killslist[373].
 					 $killslist[374].$killslist[375].$killslist[376].$killslist[377].$killslist[378]);		
 		$zonetotal50 = ($killslist[379]);
+		$fabykesha = ($killslist[380].$killslist[381].$killslist[382].$killslist[383].$killslist[384]);
+		$zonetotal51 = ($killslist[385]);
 		$zonename1 = $cval; 	      $zonemax1 = $contmax;        $zonetip1 = $contes;
 		$zonename2 = $arval; 	      $zonemax2 = $arenamax;       $zonetip2 = $gods;
 		$zonename3 = $hval;  	      $zonemax3 = $harrowmax;      $zonetip3 = $har;
@@ -1399,26 +1421,27 @@ class eq2progress_portal extends portal_generic {
 		$zonename30 = $tot4val;       $zonemax30 = $tot4max;       $zonetip30 = $terr4;
 		$zonename31 = $siegeval;      $zonemax31 = $siegemax;      $zonetip31 = $tsiege;
 		$zonename32 = $fcazicval;     $zonemax32 = $fcazicmax;     $zonetip32 = $tfcazic;
-		$zonename33 = $ffdval;     	  $zonemax33 = $ffdmax;        $zonetip33 = $tffd;
-		$zonename34 = $ka1val;     	  $zonemax34 = $ka1max;        $zonetip34 = $kuna1;
-		$zonename35 = $ka2val;     	  $zonemax35 = $ka2max;        $zonetip35 = $kuna2;
-		$zonename36 = $ka3val;     	  $zonemax36 = $ka3max;        $zonetip36 = $kuna3;
-		$zonename37 = $ka4val;     	  $zonemax37 = $ka4max;        $zonetip37 = $kuna4;
-		$zonename38 = $ka5val;     	  $zonemax38 = $ka5max;        $zonetip38 = $kuna5;
-		$zonename39 = $ka6val;     	  $zonemax39 = $ka6max;        $zonetip39 = $kuna6;
-		$zonename40 = $ka7val;     	  $zonemax40 = $ka7max;        $zonetip40 = $kuna7;
-		$zonename41 = $ka8val;     	  $zonemax41 = $ka8max;        $zonetip41 = $kuna8;
-		$zonename42 = $ka9val;     	  $zonemax42 = $ka9max;        $zonetip42 = $kuna9;
-		$zonename43 = $ka1aval;    	  $zonemax43 = $ka1amax;       $zonetip43 = $kuna1a;
-		$zonename44 = $ka1bval;    	  $zonemax44 = $ka1bmax;       $zonetip44 = $kuna1b;
-		$zonename45 = $pop1val;    	  $zonemax45 = $pop1max;       $zonetip45 = $popr1;
-		$zonename46 = $pop2val;    	  $zonemax46 = $pop2max;       $zonetip46 = $popr2;
-		$zonename47 = $pop3val;    	  $zonemax47 = $pop3max;       $zonetip47 = $popr3;
-		$zonename48 = $pop4val;    	  $zonemax48 = $pop4max;       $zonetip48 = $popr4;
-		$zonename49 = $pop5val;    	  $zonemax49 = $pop5max;       $zonetip49 = $popr5;
-		$zonename50 = $popsohval;  	  $zonemax50 = $popsohmax;     $zonetip50 = $popshate;
+		$zonename33 = $ffdval;        $zonemax33 = $ffdmax;        $zonetip33 = $tffd;
+		$zonename34 = $ka1val;        $zonemax34 = $ka1max;        $zonetip34 = $kuna1;
+		$zonename35 = $ka2val;        $zonemax35 = $ka2max;        $zonetip35 = $kuna2;
+		$zonename36 = $ka3val;        $zonemax36 = $ka3max;        $zonetip36 = $kuna3;
+		$zonename37 = $ka4val;        $zonemax37 = $ka4max;        $zonetip37 = $kuna4;
+		$zonename38 = $ka5val;        $zonemax38 = $ka5max;        $zonetip38 = $kuna5;
+		$zonename39 = $ka6val;        $zonemax39 = $ka6max;        $zonetip39 = $kuna6;
+		$zonename40 = $ka7val;        $zonemax40 = $ka7max;        $zonetip40 = $kuna7;
+		$zonename41 = $ka8val;        $zonemax41 = $ka8max;        $zonetip41 = $kuna8;
+		$zonename42 = $ka9val;        $zonemax42 = $ka9max;        $zonetip42 = $kuna9;
+		$zonename43 = $ka1aval;       $zonemax43 = $ka1amax;       $zonetip43 = $kuna1a;
+		$zonename44 = $ka1bval;       $zonemax44 = $ka1bmax;       $zonetip44 = $kuna1b;
+		$zonename45 = $pop1val;       $zonemax45 = $pop1max;       $zonetip45 = $popr1;
+		$zonename46 = $pop2val;       $zonemax46 = $pop2max;       $zonetip46 = $popr2;
+		$zonename47 = $pop3val;       $zonemax47 = $pop3max;       $zonetip47 = $popr3;
+		$zonename48 = $pop4val;       $zonemax48 = $pop4max;       $zonetip48 = $popr4;
+		$zonename49 = $pop5val;       $zonemax49 = $pop5max;       $zonetip49 = $popr5;
+		$zonename50 = $popsohval;     $zonemax50 = $popsohmax;     $zonetip50 = $popshate;
+		$zonename51 = $ykeshaval;     $zonemax51 = $ykeshamax;     $zonetip51 = $fabykesha;
 		$out = ''; 
-			for($i=1;$i<=50;$i++) {
+			for($i=1;$i<=51;$i++) {
 			$check = ${"zone".$i};
 			if ($check == TRUE) {
 			$text = ${"zonename".$i}; $value = ${"zonetotal".$i}; $max = ${"zonemax".$i}; $tooltip = ${"zonetip".$i};	
