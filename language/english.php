@@ -13,7 +13,7 @@
  * @package		eqdkp-plus
  * @version		$Rev: 12732 $
  * 
- * $Id: german.php 12732 2013-01-04 22:03:33Z hoofy_leon $
+ * $Id: english.php 12732 2013-01-04 22:03:33Z hoofy_leon $
  */
 
 if (!defined('EQDKP_INC')) {
@@ -21,7 +21,7 @@ if (!defined('EQDKP_INC')) {
 }
 
 $lang = array(
-	'eq2progress_f_eq2progress_headtext'	=> 'Titel des Moduls',
+	'eq2progress_f_eq2progress_headtext'	=> 'Title of the module',
 	'eq2progress_f_eq2progress_shattered'	=> 'Shattered Lands',
 	'eq2progress_f_eq2progress_splitpaw'	=> 'Splitpaw Saga',
 	'eq2progress_f_eq2progress_desert' 	=> 'Desert of Flames',
@@ -52,7 +52,7 @@ $lang = array(
 	'eq2progress_f_eq2progress_accursed'	=> 'Accursed Sanctum',
 	'eq2progress_f_eq2progress_vesspyr'	=> 'Vesspyr Contested',
 	'eq2progress_f_eq2progress_kingdom'	=> 'Kingdom of Sky',
-	'eq2progress_f_eq2progress_dreadscale'  => 'Dreadscale\'s Maw',
+	'eq2progress_f_eq2progress_dreadscale'  +> 'Dreadscale\'s Maw',
 	'eq2progress_f_eq2progress_deathtoll'   => 'Deathtoll',
 	'eq2progress_f_eq2progress_agesend'     => 'Age\'s End',
 	'eq2progress_f_eq2progress_altar1'      => 'Zavith\'Loa',
@@ -85,11 +85,20 @@ $lang = array(
 	'eq2progress_f_eq2progress_ka1b'        => 'Lost City of Torsis (Expert)',
 	'eq2progress_f_eq2progress_pop1'        => 'Plane of Innovation',
 	'eq2progress_f_eq2progress_pop2'        => 'Plane of Disease',
-	'eq2progress_f_eq2progress_pop3'        => 'Torden, Bastion of Thunder',
+	'eq2progress_f_eq2progress_pop3'        => 'Bastion of Thunder',
 	'eq2progress_f_eq2progress_pop4'        => 'Solusek Ro\'s Tower',
 	'eq2progress_f_eq2progress_pop5'        => 'Brachish Vaults',
 	'eq2progress_f_eq2progress_popsoh'      => 'Shard of Hate',
 	'eq2progress_f_eq2progress_ykesha'      => 'Ykesha\'s Inner Stronghold',
+	'eq2progress_f_eq2progress_chaosd1'     => 'Empyrean Steppes',
+	'eq2progress_f_eq2progress_chaosd2'     => 'Upheaval',
+	'eq2progress_f_eq2progress_chaosd3'     => 'Molten Caldera',
+	'eq2progress_f_eq2progress_chaosd4'     => 'Scales of Justice',
+	'eq2progress_f_eq2progress_chaosd5'     => 'Broken Throne',
+	'eq2progress_f_eq2progress_chaosd6'     => 'Aether Vale',
+	'eq2progress_f_eq2progress_chaosd7'     => 'Sepulcher of the Twelve',
+	'eq2progress_f_eq2progress_chaosd8'     => 'Adumbral Depths',
+	'eq2progress_f_eq2progress_chaosd9'     => 'Reef of Coirnav',
 	'eq2progress_f_eq2progress_date'	=> 'Show Date Killed?<BR>*Note: Data is updated every 24 hours.<BR>Changing date setting will take effect next update.',
 );
 ?>
