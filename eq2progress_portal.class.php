@@ -17,6 +17,7 @@
  * Modified Version of Hoofy's mybars progression module
  *
  * This version populates the guild raid achievements from the Data Api
+ * V5.71 Minor Fix
  * V5.7 Added Chaos Descending
  * V5.6 Added Fabled Ykesha's Inner Stronghold
  * V5.5 Added Shard of Hate
@@ -62,7 +63,7 @@ class eq2progress_portal extends portal_generic {
 	protected static $path		= 'eq2progress';
 	protected static $data		= array(
 		'name'			=> 'EQ2 Progression',
-		'version'		=> '5.7',
+		'version'		=> '5.71',
 		'author'		=> 'Darkmaeg',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Everquest 2 Progression',
@@ -1180,9 +1181,9 @@ class eq2progress_portal extends portal_generic {
 		if ($acid == '3383013442') {$chaosd1 = $chaosd1 + 1; $chaosd17 =$kdate.'<font color="808080"><strike>Guardian of Faal\'Armanna</strike></font><br>';}
 		if ($acid == '2441573909') {$chaosd1 = $chaosd1 + 1; $chaosd18 =$kdate.'<font color="808080"><strike>Rinturion Windblade</strike></font><br>';}
 		if ($acid == '1234581695') {$chaosd1 = $chaosd1 + 1; $chaosd19 =$kdate.'<font color="808080"><strike>The Elemental Masterpiece</strike></font><br>';}
-		if ($acid == '3572872801') {$chaosd1 = $chaosd1 + 1; $chaosd10 =$kdate.'<font color="808080"><strike>The Avatars of Air</strike></font><br>';}
-		if ($acid == '4009117753') {$chaosd1 = $chaosd1 + 1; $chaosd11 =$kdate.'<font color="808080"><strike>Pherlondien Clawpike</strike></font><br>';}
-		if ($acid == '288398619')  {$chaosd1 = $chaosd1 + 1; $chaosd12 =$kdate.'<font color="808080"><strike>Baltaldor the Cursed</strike></font><br>';}
+		if ($acid == '3572872801') {$chaosd1 = $chaosd1 + 1; $chaosd110 =$kdate.'<font color="808080"><strike>The Avatars of Air</strike></font><br>';}
+		if ($acid == '4009117753') {$chaosd1 = $chaosd1 + 1; $chaosd111 =$kdate.'<font color="808080"><strike>Pherlondien Clawpike</strike></font><br>';}
+		if ($acid == '288398619')  {$chaosd1 = $chaosd1 + 1; $chaosd112 =$kdate.'<font color="808080"><strike>Baltaldor the Cursed</strike></font><br>';}
 		//Vegarlson: Upheaval
 		if ($acid == '2002505924') {$chaosd2 = $chaosd2 + 1; $chaosd21 =$kdate.'<font color="808080"><strike>[Mythic] Warlord Gintolaken</strike></font><br>';}
 		if ($acid == '1164612734') {$chaosd2 = $chaosd2 + 1; $chaosd22 =$kdate.'<font color="808080"><strike>[Mythic] Vegerogus</strike></font><br>';}
