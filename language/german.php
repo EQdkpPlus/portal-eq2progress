@@ -99,6 +99,6 @@ $lang = array(
 	'eq2progress_f_eq2progress_chaosd7'     => 'Sepulcher of the Twelve',
 	'eq2progress_f_eq2progress_chaosd8'     => 'Adumbral Depths',
 	'eq2progress_f_eq2progress_chaosd9'     => 'Reef of Coirnav',
+	'eq2progress_f_eq2progress_mischf'      => 'Castle Mischief',
 	'eq2progress_f_eq2progress_date'	=> 'Show Date Killed?<BR>*Note: Data is updated every 24 hours.<BR>Changing date setting will take effect next update.',
 );
-?>
