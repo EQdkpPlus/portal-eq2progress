@@ -52,7 +52,7 @@ $lang = array(
 	'eq2progress_f_eq2progress_accursed'	=> 'Accursed Sanctum',
 	'eq2progress_f_eq2progress_vesspyr'	=> 'Vesspyr Contested',
 	'eq2progress_f_eq2progress_kingdom'	=> 'Kingdom of Sky',
-	'eq2progress_f_eq2progress_dreadscale'  +> 'Dreadscale\'s Maw',
+	'eq2progress_f_eq2progress_dreadscale'  => 'Dreadscale\'s Maw',
 	'eq2progress_f_eq2progress_deathtoll'   => 'Deathtoll',
 	'eq2progress_f_eq2progress_agesend'     => 'Age\'s End',
 	'eq2progress_f_eq2progress_altar1'      => 'Zavith\'Loa',
@@ -99,6 +99,7 @@ $lang = array(
 	'eq2progress_f_eq2progress_chaosd7'     => 'Sepulcher of the Twelve',
 	'eq2progress_f_eq2progress_chaosd8'     => 'Adumbral Depths',
 	'eq2progress_f_eq2progress_chaosd9'     => 'Reef of Coirnav',
+	'eq2progress_f_eq2progress_mischf'      => 'Castle Mischief',
 	'eq2progress_f_eq2progress_date'	=> 'Show Date Killed?<BR>*Note: Data is updated every 24 hours.<BR>Changing date setting will take effect next update.',
 );
 ?>
