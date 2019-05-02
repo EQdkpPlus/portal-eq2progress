@@ -8,7 +8,7 @@
  * Date:		$Date: 2013-01-09 19:20:34 +0100 (Wed, 09 Jan 2013) $
  * -----------------------------------------------------------------------
  * @author		$Author: Darkmaeg $
- * @copyright	2006-2015 EQdkp-Plus Developer Team
+ * @copyright		2006-2015 EQdkp-Plus Developer Team
  * @link		http://eqdkp-plus.com
  * @package		eqdkp-plus
  * @version		$Rev: 00037 $
@@ -17,6 +17,7 @@
  * Modified Version of Hoofy's mybars progression module
  *
  * This version populates the guild raid achievements from the Data Api
+ * V6.1 Daybreak changed Xegony and Fennin Ro achieve ID
  * V6.0 Updated Castle Mischief - Daybreak changed all ID #'s
  * V5.9 Minor Fix
  * V5.8 Added Castle Mischief
@@ -67,7 +68,7 @@ class eq2progress_portal extends portal_generic {
 	protected static $path		= 'eq2progress';
 	protected static $data		= array(
 		'name'			=> 'EQ2 Progression',
-		'version'		=> '6.0',
+		'version'		=> '6.1',
 		'author'		=> 'Darkmaeg',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Everquest 2 Progression',
@@ -602,7 +603,6 @@ class eq2progress_portal extends portal_generic {
 		$eof7=$spacer.'<font color="white">Othysis Muravian</font><br>'; $eof8=$spacer.'<font color="white">Zylphax the Shredder</font><br>';
 		$totcval=$this->user->lang('eq2progress_f_eq2progress_totcont'); 
 		$totc1=$spacer.'<font color="white">Vanlith the Mysterious One</font><br>'; 
-		$totc2=$spacer.'<font color="white">Venekor</font><br>'; 
 		$tot1val=$this->user->lang('eq2progress_f_eq2progress_tot1');
 		$tot11=$spacer.'<font color="white">Bhoughbh Nova-Prime</font><br>'; $tot12=$spacer.'<font color="white">MCP-Powered Pulsar</font><br>'; 
 		$tot13=$spacer.'<font color="white">The Tinkered Abomination</font><br>'; $tot14=$spacer.'<font color="white">Hovercopter Hingebot</font><br>'; 
@@ -798,7 +798,7 @@ class eq2progress_portal extends portal_generic {
 		$kdate = "";
 		if (($this->config('eq2progress_date')) == TRUE ) 		
 		{ ($stamp = date('m/d/Y', $achieve[$a]['completedtimestamp'])); 
-        ($kdate = '<font color="white">'.$stamp.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>'); }
+		($kdate = '<font color="white">'.$stamp.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>'); }
 		$acid = $achieve[$a]['id'];
 		//Dreadcutter
 		if ($acid == '3473349988') {$dread = $dread + 1; $d1 =$kdate.'<font color="808080"><strike>Omugra, Thazurus, & Vuzalg</strike></font><br>';} 
@@ -991,7 +991,6 @@ class eq2progress_portal extends portal_generic {
 		if ($acid == '3545123490') {$eof = $eof + 1; $eof8 =$kdate.'<font color="808080"><strike>Zylphax the Shredder</strike></font><br>';}
 		//Terrors of Thalumbra - Contested
 		if ($acid == '3418973156') {$totc = $totc + 1; $totc1 =$kdate.'<font color="808080"><strike>Vanlith the Mysterious One</strike></font><br>';}
-		if ($acid == '0') {$totc = $totc + 1; $totc2 =$kdate.'<font color="808080"><strike>Venekor</strike></font><br>';}
 		//Terrors of Thalumbra - Maldura: Bhoughbh's Folly
 		if ($acid == '2221464290') {$tot1 = $tot1 + 1; $tot11 =$kdate.'<font color="808080"><strike>Bhoughbh Nova-Prime</strike></font><br>';}
 		if ($acid == '4084198004') {$tot1 = $tot1 + 1; $tot12 =$kdate.'<font color="808080"><strike>MCP-Powered Pulsar</strike></font><br>';}
@@ -1235,10 +1234,10 @@ class eq2progress_portal extends portal_generic {
 		if ($acid == '1525247638') {$chaosd4 = $chaosd4 + 1; $chaosd42 =$kdate.'<font color="808080"><strike>Seventh Hammer</strike></font><br>';}
 		//Doomfire: The Broken Throne
 		if ($acid == '2437670607') {$chaosd5 = $chaosd5 + 1; $chaosd51 =$kdate.'<font color="808080"><strike>[Mythic] Fennin Ro</strike></font><br>';}
-		if ($acid == '3381712885') {$chaosd5 = $chaosd5 + 1; $chaosd52 =$kdate.'<font color="808080"><strike>Fennin Ro</strike></font><br>';}
+		if ($acid == '3008609669') {$chaosd5 = $chaosd5 + 1; $chaosd52 =$kdate.'<font color="808080"><strike>Fennin Ro</strike></font><br>';}
 		//Eryslai: The Aether Vale
 		if ($acid == '3427418215') {$chaosd6 = $chaosd6 + 1; $chaosd61 =$kdate.'<font color="808080"><strike>[Mythic] Xegony</strike></font><br>';}
-		if ($acid == '2142775575') {$chaosd6 = $chaosd6 + 1; $chaosd62 =$kdate.'<font color="808080"><strike>Xegony</strike></font><br>';}
+		if ($acid == '3507625008') {$chaosd6 = $chaosd6 + 1; $chaosd62 =$kdate.'<font color="808080"><strike>Xegony</strike></font><br>';}
 		//Ragrax, the Sepulcher of the Twelve
 		if ($acid == '135881922')  {$chaosd7 = $chaosd7 + 1; $chaosd71 =$kdate.'<font color="808080"><strike>Rathe Council 4</strike></font><br>';}
 		if ($acid == '2524836193') {$chaosd7 = $chaosd7 + 1; $chaosd72 =$kdate.'<font color="808080"><strike>Rathe Council 3</strike></font><br>';}
@@ -1268,7 +1267,7 @@ class eq2progress_portal extends portal_generic {
 		$fkdate = "";
 		if (($this->config('eq2progress_date')) == TRUE ) 		
 		{ ($fstamp = date('m/d/Y', $achieve[$b]['completedtimestamp'])); 
-        	($fkdate = '<font color="white">'.$fstamp.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>');	}
+       		($fkdate = '<font color="white">'.$fstamp.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>');	}
 		if ($acid == '2600463831') {$ka11 =$fkdate.'<font color="808080"><strike>Shanaira the Prestigious</strike></font> FLAWLESS<br>';}
 		if ($acid == '4134444588') {$ka12 =$fkdate.'<font color="808080"><strike>Amalgams of Order and Chaos</strike></font> FLAWLESS<br>';}
 		if ($acid == '4043528757') {$ka13 =$fkdate.'<font color="808080"><strike>Shanaira the Powermonger</strike></font> FLAWLESS<br>';}
@@ -1408,8 +1407,8 @@ class eq2progress_portal extends portal_generic {
 		if ($acid == '2761620560') {$chaosd313 =$fkdate.'<font color="808080"><strike>Arch Mage Yozanni</strike></font> FLAWLESS<br>';}
 		if ($acid == '551723042')  {$chaosd314 =$fkdate.'<font color="808080"><strike>Magmaton</strike></font> FLAWLESS<br>';}
 		if ($acid == '1859400961') {$chaosd41 =$fkdate.'<font color="808080"><strike>[Mythic] Seventh Hammer</strike></font> FLAWLESS<br>';}
-		if ($acid == '959246131')  {$chaosd42=$fkdate.'<font color="808080"><strike>Seventh Hammer</strike></font> FLAWLESS<br>';}
-		if ($acid == '1859400961') {$chaosd51 =$fkdate.'<font color="808080"><strike>[Mythic] Fennin Ro</strike></font> FLAWLESS<br>';}
+		if ($acid == '959246131')  {$chaosd42 =$fkdate.'<font color="808080"><strike>Seventh Hammer</strike></font> FLAWLESS<br>';}
+		if ($acid == '2272192018') {$chaosd51 =$fkdate.'<font color="808080"><strike>[Mythic] Fennin Ro</strike></font> FLAWLESS<br>';}
 		if ($acid == '3499506720') {$chaosd52 =$fkdate.'<font color="808080"><strike>Fennin Ro</strike></font> FLAWLESS<br>';}
 		if ($acid == '262618234')  {$chaosd61 =$fkdate.'<font color="808080"><strike>[Mythic] Xegony</strike></font> FLAWLESS<br>';}
 		if ($acid == '1283402603') {$chaosd62 =$fkdate.'<font color="808080"><strike>Xegony</strike></font> FLAWLESS<br>';}
@@ -1518,7 +1517,7 @@ class eq2progress_portal extends portal_generic {
 		$zonetotal9 = ($killslist[78]);
 		$tears = ($killslist[79].$killslist[80].$killslist[81].$killslist[82].$killslist[83].$killslist[84].$killslist[85].$killslist[86]
 		          .$killslist[87].$killslist[88].$killslist[89].$killslist[90].$killslist[91].$killslist[92].$killslist[93]);
-	    	$zonetotal10 = ($killslist[94]);
+		$zonetotal10 = ($killslist[94]);
 		$ascent = ($killslist[95].$killslist[96].$killslist[97].$killslist[98].$killslist[99].$killslist[100]
 		           .$killslist[101].$killslist[102].$killslist[103].$killslist[104].$killslist[105]);
 		$zonetotal11 = ($killslist[106]);
@@ -1532,7 +1531,7 @@ class eq2progress_portal extends portal_generic {
 		$zonetotal15 = ($killslist[128]);
 		$agesen = ($killslist[129].$killslist[130].$killslist[131].$killslist[132]);
 		$zonetotal16 = ($killslist[133]);
-        	$aomavatar = ($killslist[134].$killslist[135].$killslist[136].$killslist[137].$killslist[138]);
+    		$aomavatar = ($killslist[134].$killslist[135].$killslist[136].$killslist[137].$killslist[138]);
 		$zonetotal17 = ($killslist[139]);
 		$mal1 = ($killslist[140].$killslist[141].$killslist[142].$killslist[143]);
 		 $zonetotal18 = ($killslist[144]);
