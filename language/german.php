@@ -133,6 +133,11 @@ $lang = array(
 	'eq2progress_f_eq2progress_ror3'        => 'Takish Badlands',
 	'eq2progress_f_eq2progress_ror4'        => 'Buried Takish\'Hiz',
 	'eq2progress_f_eq2progress_ror5'        => 'The Sultan\'s',
+	'eq2progress_f_eq2progress_ror6'        => 'Contested',
+	'eq2progress_f_eq2progress_boz1'        => 'Chromatic Chamber',
+	'eq2progress_f_eq2progress_boz2'        => 'Crested Expanse',
+	'eq2progress_f_eq2progress_boz3'        => 'The Delves',
+	'eq2progress_f_eq2progress_boz4'        => 'Sovereign Summons',
     	'eq2progress_f_eq2progress_date'	=> 'Show Date Killed?<BR>*Note: Data is updated every 24 hours.<BR>Changing date setting will take effect next update.',
 );
 ?>
